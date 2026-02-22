@@ -2,26 +2,29 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/userModels.js");
 
 const protect = async (req, res, next) => {
-    let token;
+    try {
+        let token;
 
-    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
-        try {
+        if (
+            req.headers.authorization &&
+            req.headers.authorization.startsWith("Bearer")
+        ) {
             token = req.headers.authorization.split(" ")[1];
 
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
             req.user = await User.findById(decoded.id).select("-password");
 
-            next();
-        } catch (error) {
-            res.status(401);
-            throw new Error("Unauthorized access");
-        }
-    }
+            if (!req.user) {
+                return res.status(401).json({ message: "User not found" });
+            }
 
-    if (!token) {
-        res.status(401);
-        throw new Error("Unauthorized access");
+            next();
+        } else {
+            return res.status(401).json({ message: "Unauthorized access" });
+        }
+    } catch (error) {
+        return res.status(401).json({ message: "Invalid or expired token" });
     }
 };
 
@@ -29,8 +32,7 @@ const adminOnly = (req, res, next) => {
     if (req.user && req.user.isAdmin) {
         next();
     } else {
-        res.status(403);
-        throw new Error("Unauthorized access");
+        return res.status(403).json({ message: "Unauthorized access" });
     }
 };
 

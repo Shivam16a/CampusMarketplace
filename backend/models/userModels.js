@@ -13,14 +13,21 @@ const userSchema = new mongoose.Schema({
     gender: { type: String, required: true },
     collagemane: { type: String, required: true },
     department: { type: String, required: true },
+    profilepic: {
+        type: String,
+        required:true
+    },
     role: {
         type: String,
-        enum:["user","Seller"],
-        default:"user"
+        enum: ["user", "Seller"],
+        default: "user"
     },
-    isAdmin:false,
-    password: {type:String,required:true},
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
+    password: { type: String, required: true },
 }, { timestamps: true });
 
-const User = new mongoose.model("User",userSchema);
+const User = new mongoose.model("User", userSchema);
 module.exports = User;
