@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     department: { type: String, required: true },
     profilepic: {
         type: String,
-        required:true
+        default:""
     },
     role: {
         type: String,

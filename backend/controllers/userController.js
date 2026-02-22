@@ -22,12 +22,8 @@ const registerUser = async (req, res) => {
             password,
         } = req.body;
 
-        // Agar multer use kar rahe ho
-        const profilepic = req.file ? req.file.filename : null;
-
-        if (!profilepic) {
-            return res.status(400).json({ message: "Profile picture required" });
-        }
+        // Agar image upload hui hai to filename lo
+        const profilepic = req.file ? req.file.filename : "";
 
         const userExists = await User.findOne({ email });
         if (userExists) {
@@ -52,8 +48,8 @@ const registerUser = async (req, res) => {
             _id: user._id,
             username: user.username,
             email: user.email,
-            role: user.role,
             profilepic: user.profilepic,
+            role: user.role,
             token: generateToken(user._id),
         });
 
@@ -61,7 +57,6 @@ const registerUser = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
 // ================= LOGIN =================
 const loginUser = async (req, res) => {
     try {
