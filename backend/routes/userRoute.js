@@ -9,6 +9,7 @@ const {
     deleteProfile,
     adminUpdateUser,
     adminDeleteUser,
+    getAllUsers  
 } = require("../controllers/userController.js");
 
 const { protect, adminOnly } = require("../middleware/authMiddleware.js");
@@ -23,6 +24,7 @@ router.put("/profile", protect, upload.single("profilepic"), updateProfile);
 router.delete("/profile", protect, deleteProfile);
 
 // ADMIN
+router.get("/all", protect, adminOnly, getAllUsers);   
 router.put("/admin/:id", protect, adminOnly, upload.single("profilepic"), adminUpdateUser);
 router.delete("/admin/:id", protect, adminOnly, adminDeleteUser);
 
