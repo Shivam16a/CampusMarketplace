@@ -33,18 +33,21 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="nav">
 
           {/* 🔍 SEARCH BOX */}
-          <form className="d-flex mx-auto w-50" onSubmit={searchHandler}>
-            <input
-              type="text"
-              className="form-control me-2"
-              placeholder="Search products..."
-              value={keyword}
-              onChange={(e) => setKeyword(e.target.value)}
-            />
-            <button className="btn btn-outline-primary">
-              <i className="fa fa-search"></i>
-            </button>
-          </form>
+          {user ? (<>{user.role === "admin" ? (<>
+            <form className="d-flex mx-auto w-50" onSubmit={searchHandler}>
+              <input
+                type="text"
+                className="form-control me-2"
+                placeholder="Search products..."
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
+              />
+              <button className="btn btn-outline-primary">
+                <i className="fa fa-search"></i>
+              </button>
+            </form>
+          </>) : (<></>)}</>) : (<></>)}
+
 
           <ul className="navbar-nav ms-auto">
 
