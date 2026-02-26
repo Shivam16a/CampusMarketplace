@@ -9,6 +9,8 @@ import Profile from "./pages/Profile";
 import AllItems from "./pages/AllItems";
 import AddItem from "./pages/AddItem";
 import MyListings from "./pages/MyListings";
+import ItemDetails from "./pages/ItemDetails";
+import EditItem from "./pages/EditItem";
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/item/:id" element={<ItemDetails/>}/>
+          <Route path="/edit-item/:id" element={<EditItem/>}/>
         </Routes>
       </div>
       <Footer />

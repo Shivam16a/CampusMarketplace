@@ -23,6 +23,17 @@ const AllItems = () => {
         fetchItems();
     }, [keyword]);
 
+    const statuscolor = (roles)=>{
+        switch(roles){
+            case "Available":
+                return "bg-success";
+            case "Sold":
+                return "bg-warning";
+            default:
+                return "bg-danger";
+        }
+    }
+
     return (
         <div className="container mt-4">
             <h3>All Items</h3>
@@ -71,8 +82,11 @@ const AllItems = () => {
                                     />
                                 )}
                                 <div className="card-body">
-                                    <h5>{item.name}</h5>
-                                    <p>₹ {item.price}</p>
+                                    <div className="d-flex justify-content-between align-items-center">
+                                        <h5 className="mb-0">{item.name}</h5>
+                                        <span className={`badge ${statuscolor(item.status)}`}>{item.status}</span>
+                                    </div>
+                                    <p className="me-2">₹ {item.price}</p>
                                     <Link to={`/item/${item._id}`} className="btn btn-sm btn-primary">
                                         View
                                     </Link>

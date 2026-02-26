@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/api";
+import { Link } from "react-router-dom";
 
 const MyListings = () => {
   const [items, setItems] = useState([]);
@@ -40,7 +41,12 @@ const MyListings = () => {
             <option>Reserved</option>
             <option>Sold</option>
           </select>
-
+          <Link
+            to={`/edit-item/${item._id}`}
+            className="btn btn-sm btn-warning me-2"
+          >
+            Edit
+          </Link>
           <button
             className="btn btn-danger btn-sm"
             onClick={() => deleteItem(item._id)}
