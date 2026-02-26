@@ -8,6 +8,7 @@ import ItemInfo from "../components/Item/ItemInfo";
 const ItemDetails = () => {
   const { id } = useParams();
   const [item, setItem] = useState(null);
+  const [isWishlisted, setIsWishlisted] = useState(false);
 
   const fetchItem = async () => {
     try {
@@ -18,8 +19,34 @@ const ItemDetails = () => {
     }
   };
 
+  const checkWishlist = async () => {
+    try {
+      const { data } = await API.get("/wishlist");
+      const exists = data.some((wishItem) => wishItem._id === id);
+      setIsWishlisted(exists);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const toggleWishlist = async () => {
+    try {
+      if (isWishlisted) {
+        await API.delete(`/wishlist/${id}`);
+        setIsWishlisted(false);
+      } else {
+        await API.post(`/wishlist/${id}`);
+        setIsWishlisted(true);
+      }
+    } catch (error) {
+      console.log(error.response?.data?.message);
+      alert(error.response?.data?.message);
+    }
+  };
+
   useEffect(() => {
     fetchItem();
+    checkWishlist();
   }, [id]);
 
   if (!item) return <h4 className="text-center mt-5">Loading...</h4>;
@@ -27,15 +54,33 @@ const ItemDetails = () => {
   return (
     <div className="container mt-4">
       <div className="row">
-        {/* Left Side - Images */}
+
+        {/* Left - Images */}
         <div className="col-md-6">
           <ItemCarousel images={item.images} />
         </div>
 
-        {/* Right Side - Item Info */}
+        {/* Right - Info */}
         <div className="col-md-6">
+
+          {/* ❤️ Wishlist Button */}
+          <div className="text-end mb-2">
+            <button
+              className="btn"
+              onClick={toggleWishlist}
+              style={{ fontSize: "24px", border: "none" }}
+            >
+              {isWishlisted ? (
+                <i className="fas fa-heart text-danger"></i>
+              ) : (
+                <i className="far fa-heart"></i>
+              )}
+            </button>
+          </div>
+
           <ItemInfo item={item} />
           <SellerInfo seller={item.user} />
+
         </div>
       </div>
     </div>

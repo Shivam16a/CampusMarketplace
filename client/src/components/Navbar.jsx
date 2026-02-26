@@ -23,7 +23,7 @@ const Navbar = () => {
       <div className="container">
 
         <Link className="navbar-brand fw-bold text-primary" to="/">
-          <i className="fa fa-refresh me-2"></i>ExchangeCircle
+          <i className="fa fa-refresh me-2"></i>CampusMart
         </Link>
 
         <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
@@ -33,12 +33,12 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="nav">
 
           {/* 🔍 SEARCH BOX */}
-          {user ? (<>{user.role === "admin" ? (<>
+          {user?.isAdmin && (
             <form className="d-flex mx-auto w-50" onSubmit={searchHandler}>
               <input
                 type="text"
                 className="form-control me-2"
-                placeholder="Search products..."
+                placeholder="Admin Search..."
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
               />
@@ -46,7 +46,7 @@ const Navbar = () => {
                 <i className="fa fa-search"></i>
               </button>
             </form>
-          </>) : (<></>)}</>) : (<></>)}
+          )}
 
 
           <ul className="navbar-nav ms-auto">

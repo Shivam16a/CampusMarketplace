@@ -8,7 +8,7 @@ const Register = () => {
     email: "",
     phone: "",
     gender: "",
-    collagemane: "",
+    collagename: "",
     department: "",
     password: "",
   });
@@ -145,7 +145,7 @@ const Register = () => {
                     </label>
                     <input
                       type="text"
-                      name="collagemane"
+                      name="collagename"
                       className="form-control"
                       placeholder="Enter college name"
                       onChange={handleChange}

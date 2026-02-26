@@ -79,6 +79,7 @@ const AllItems = () => {
                                         src={`http://localhost:6550/uploads/${item.images[0]}`}
                                         className="card-img-top"
                                         alt=""
+                                        style={{height:"400px"}}
                                     />
                                 )}
                                 <div className="card-body">

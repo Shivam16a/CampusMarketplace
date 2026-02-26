@@ -20,7 +20,7 @@ const registerUser = async (req, res) => {
             email,
             phone,
             gender,
-            collagemane,
+            collagename,
             department,
             password,
         } = req.body;
@@ -41,7 +41,7 @@ const registerUser = async (req, res) => {
             email,
             phone,
             gender,
-            collagemane,
+            collagename,
             department,
             profilepic,
             password: hashedPassword,
@@ -82,9 +82,10 @@ const loginUser = async (req, res) => {
             username: user.username,
             email: user.email,
             role: user.role,
+            isAdmin: user.isAdmin,  
             profilepic: user.profilepic,
             token: generateToken(user._id),
-        });
+          });
 
     } catch (error) {
         res.status(500).json({ message: error.message });

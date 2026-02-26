@@ -9,6 +9,9 @@ const ItemCarousel = ({ images }) => {
       id="itemCarousel"
       className="carousel slide"
       data-bs-ride="carousel"
+      data-bs-interval="2000"   
+      data-bs-pause="hover"     
+      data-bs-touch="true"      
     >
       <div className="carousel-inner">
         {images.map((img, index) => (
@@ -26,23 +29,27 @@ const ItemCarousel = ({ images }) => {
         ))}
       </div>
 
-      <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#itemCarousel"
-        data-bs-slide="prev"
-      >
-        <span className="carousel-control-prev-icon"></span>
-      </button>
+      {images.length > 1 && (
+        <>
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#itemCarousel"
+            data-bs-slide="prev"
+          >
+            <span className="carousel-control-prev-icon"></span>
+          </button>
 
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#itemCarousel"
-        data-bs-slide="next"
-      >
-        <span className="carousel-control-next-icon"></span>
-      </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#itemCarousel"
+            data-bs-slide="next"
+          >
+            <span className="carousel-control-next-icon"></span>
+          </button>
+        </>
+      )}
     </div>
   );
 };
