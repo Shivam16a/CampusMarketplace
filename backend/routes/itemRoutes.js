@@ -22,7 +22,7 @@ router.put("/status/:id", protect, updateItemStatus);
 router.get("/", getItems);
 router.get("/:id", getSingleItem);
 
-router.put("/:id", protect, upload.array("images", 5), updateItem);
+router.put("/:id", protect, updateItem);
 router.delete("/:id", protect, deleteItem);
 
 module.exports = router;

@@ -46,7 +46,11 @@ const ItemDetails = () => {
 
   useEffect(() => {
     fetchItem();
-    checkWishlist();
+
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (userInfo) {
+      checkWishlist();
+    }
   }, [id]);
 
   if (!item) return <h4 className="text-center mt-5">Loading...</h4>;

@@ -12,6 +12,7 @@ const addItem = async (req, res) => {
 
         const item = await Item.create({
             user: req.user._id,
+            seller: req.user._id,
             name,
             description,
             category,
@@ -93,6 +94,7 @@ const updateItem = async (req, res) => {
             return res.status(404).json({ message: "Item not found" });
         }
 
+        // Only owner can update
         if (item.user.toString() !== req.user._id.toString()) {
             return res.status(403).json({ message: "Not authorized" });
         }
@@ -107,14 +109,8 @@ const updateItem = async (req, res) => {
                 ? req.body.exchangeOption
                 : item.exchangeOption;
 
-        // If new images uploaded
-        if (req.files && req.files.length > 0) {
-            item.images = req.files.map((file) => file.filename);
-        }
-
         const updatedItem = await item.save();
         res.json(updatedItem);
-
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

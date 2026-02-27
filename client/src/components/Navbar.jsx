@@ -48,7 +48,6 @@ const Navbar = () => {
             </form>
           )}
 
-
           <ul className="navbar-nav ms-auto">
 
             {user ? (
@@ -58,7 +57,13 @@ const Navbar = () => {
                     <i className="fa fa-user me-1"></i>Profile
                   </Link>
                 </li>
-
+                {user?.role === "seller" && (
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/seller-dashboard">
+                      Seller Panel
+                    </Link>
+                  </li>
+                )}
                 <li className="nav-item">
                   <button className="btn btn-outline-danger ms-2" onClick={logoutHandler}>
                     <i className="fa fa-sign-out"></i>

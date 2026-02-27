@@ -11,6 +11,7 @@ import AddItem from "./pages/AddItem";
 import MyListings from "./pages/MyListings";
 import ItemDetails from "./pages/ItemDetails";
 import EditItem from "./pages/EditItem";
+import SellerDashboard from "./pages/SellerDashboard";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/item/:id" element={<ItemDetails/>}/>
           <Route path="/edit-item/:id" element={<EditItem/>}/>
+          <Route path="/seller-dashboard" element={<SellerDashboard/>}/>
         </Routes>
       </div>
       <Footer />
