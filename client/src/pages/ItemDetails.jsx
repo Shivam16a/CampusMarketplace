@@ -4,6 +4,7 @@ import API from "../utils/api";
 import ItemCarousel from "../components/Item/ItemCarousel";
 import SellerInfo from "../components/Item/SellerInfo";
 import ItemInfo from "../components/Item/ItemInfo";
+import PurchaseButton from "../components/Purchase/PurchaseButton";
 
 const ItemDetails = () => {
   const { id } = useParams();
@@ -84,6 +85,10 @@ const ItemDetails = () => {
 
           <ItemInfo item={item} />
           <SellerInfo seller={item.user} />
+
+          {item.status === "Available" && (
+            <PurchaseButton itemId={item._id} />
+          )}
 
         </div>
       </div>
