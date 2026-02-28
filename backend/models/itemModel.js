@@ -27,6 +27,11 @@ const itemSchema = new mongoose.Schema(
       enum: ["Available", "Reserved", "Sold"],
       default: "Available",
     },
+    seller: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   { timestamps: true }
 );

@@ -13,6 +13,7 @@ import ItemDetails from "./pages/ItemDetails";
 import EditItem from "./pages/EditItem";
 import SellerDashboard from "./pages/SellerDashboard";
 import SellerRequests from "./pages/SellerRequests";
+import BuyerRequests from "./pages/BuyerRequests";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/edit-item/:id" element={<EditItem/>}/>
           <Route path="/seller-dashboard" element={<SellerDashboard/>}/>
           <Route path="/seller-requests" element={<SellerRequests/>}/>
+          <Route path="/my-requests" element={<BuyerRequests/>}/>
         </Routes>
       </div>
       <Footer />

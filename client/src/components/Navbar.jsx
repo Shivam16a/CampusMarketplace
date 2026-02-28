@@ -57,6 +57,11 @@ const Navbar = () => {
                     <i className="fa fa-user me-1"></i>Profile
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link to="/my-requests" className="nav-link">
+                    My Requests
+                  </Link>
+                </li>
                 {user?.role === "seller" && (
                   <li className="nav-item">
                     <Link className="nav-link" to="/seller-dashboard">

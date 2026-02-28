@@ -96,7 +96,7 @@ const Profile = () => {
                   <p><i className="fa fa-envelope me-2"></i>{user.email}</p>
                   <p><i className="fa fa-phone me-2"></i>{user.phone}</p>
                   <p><i className="fa fa-venus-mars me-2"></i>{user.gender}</p>
-                  <p><i className="fa fa-university me-2"></i>{user.collagemane}</p>
+                  <p><i className="fa fa-university me-2"></i>{user.collagename}</p>
                   <p><i className="fa fa-book me-2"></i>{user.department}</p>
                 </div>
               </div>
