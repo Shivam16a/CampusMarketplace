@@ -57,21 +57,32 @@ const Navbar = () => {
                     <i className="fa fa-user me-1"></i>Profile
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link to="/my-requests" className="nav-link">
-                    My Requests
-                  </Link>
-                </li>
+                {user?.role !== "seller" && (
+                  <>
+                    <li className="nav-item">
+                      <Link to="/my-requests" className="nav-link">
+                        <i className="fas fa-shopping-cart"></i> My order
+                      </Link>
+                    </li>
+                  </>
+                )}
+                {user?.isAdmin &&(<>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/admin">
+                    <i className="fas fa-user-shield"></i> Admin
+                    </Link>
+                  </li>
+                </>)}
                 {user?.role === "seller" && (
                   <>
                     <li className="nav-item">
                       <Link className="nav-link" to="/seller-dashboard">
-                        Seller Panel
+                        <i className="fas fa-signal"></i> Product Status
                       </Link>
                     </li>
                     <li className="nav-item">
                       <Link className="nav-link" to="/sellerchart">
-                      SellerChart
+                        <i className="fas fa-chart-line"></i> Analytic
                       </Link>
                     </li>
                   </>

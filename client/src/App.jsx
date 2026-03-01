@@ -15,6 +15,9 @@ import SellerDashboard from "./pages/SellerDashboard";
 import SellerRequests from "./pages/SellerRequests";
 import BuyerRequests from "./pages/BuyerRequests";
 import SellerDashboardforseller from "./pages/seller/SellerDashboard";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import ManageUsers from "./pages/admin/ManageUsers";
 
 
 function App() {
@@ -35,7 +38,11 @@ function App() {
           <Route path="/seller-dashboard" element={<SellerDashboard />} />
           <Route path="/seller-requests" element={<SellerRequests />} />
           <Route path="/my-requests" element={<BuyerRequests />} />
-          <Route path="/sellerchart" element={<SellerDashboardforseller/>}/>
+          <Route path="/sellerchart" element={<SellerDashboardforseller />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="users" element={<ManageUsers />} />
+          </Route>
         </Routes>
       </div>
       <Footer />
