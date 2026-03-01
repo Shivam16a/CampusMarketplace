@@ -63,11 +63,18 @@ const Navbar = () => {
                   </Link>
                 </li>
                 {user?.role === "seller" && (
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/seller-dashboard">
-                      Seller Panel
-                    </Link>
-                  </li>
+                  <>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/seller-dashboard">
+                        Seller Panel
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/sellerchart">
+                      SellerChart
+                      </Link>
+                    </li>
+                  </>
                 )}
                 <li className="nav-item">
                   <button className="btn btn-outline-danger ms-2" onClick={logoutHandler}>

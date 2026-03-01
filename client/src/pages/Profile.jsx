@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../utils/api";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -10,14 +10,7 @@ const Profile = () => {
   // 🔥 Fetch Profile Function (Now outside useEffect)
   const fetchProfile = async () => {
     try {
-      const { data } = await axios.get(
-        "http://localhost:6550/api/auth/profile",
-        {
-          headers: {
-            Authorization: `Bearer ${userInfo.token}`,
-          },
-        }
-      );
+      const { data } = await API.get("/auth/profile");
       setUser(data);
     } catch (error) {
       console.error("Failed to load profile");
@@ -37,13 +30,7 @@ const Profile = () => {
   const updateProfile = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(
-        "http://localhost:6550/api/auth/profile",
-        user,
-        {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        }
-      );
+      await API.put("/auth/profile", user);
       alert("Profile Updated Successfully");
       setEditMode(false);
       fetchProfile();
@@ -136,7 +123,7 @@ const Profile = () => {
                         type="text"
                         name="collegeName"
                         className="form-control"
-                        value={user.collagemane}
+                        value={user.collagename}
                         onChange={handleChange}
                         placeholder="College Name"
                       />

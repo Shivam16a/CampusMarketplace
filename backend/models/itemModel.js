@@ -22,6 +22,12 @@ const itemSchema = new mongoose.Schema(
       required: true,
     },
     images: [{ type: String }],
+
+    isApproved: {
+      type: Boolean,
+      default: false,
+    },
+    
     status: {
       type: String,
       enum: ["Available", "Reserved", "Sold"],
