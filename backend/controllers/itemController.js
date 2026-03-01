@@ -156,23 +156,28 @@ const getMyItems = async (req, res) => {
 // ================= UPDATE ITEM STATUS =================
 const updateItemStatus = async (req, res) => {
     try {
-        const { status } = req.body;
-
         const item = await Item.findById(req.params.id);
 
         if (!item) {
             return res.status(404).json({ message: "Item not found" });
         }
 
-        if (item.user.toString() !== req.user._id.toString()) {
-            return res.status(403).json({ message: "Not authorized" });
+        if (!req.user) {
+            return res.status(401).json({ message: "Not authorized" });
         }
 
-        item.status = status;
+        // 🔥 owner check using user field
+        if (item.user.toString() !== req.user._id.toString()) {
+            return res.status(401).json({ message: "Not authorized" });
+        }
+
+        item.status = req.body.status;
         await item.save();
 
-        res.json({ message: "Status updated", item });
+        res.json({ message: "Status updated successfully" });
+
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: error.message });
     }
 };

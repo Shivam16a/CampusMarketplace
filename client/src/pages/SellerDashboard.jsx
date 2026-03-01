@@ -54,6 +54,7 @@ const SellerDashboard = () => {
         )
       );
     } catch (error) {
+      console.log(error.message);
       alert("Status update failed");
     }
   };
@@ -95,7 +96,7 @@ const SellerDashboard = () => {
                   <span
                     className={`badge mb-2 ${statuscolor(item.status)}`}
                   >
-                    {item.status || "available"}
+                    {item.status || "Available"}
                   </span>
 
                   <div className="mt-auto">

@@ -116,7 +116,7 @@ const updateProfile = async (req, res) => {
         user.email = req.body.email || user.email;
         user.phone = req.body.phone || user.phone;
         user.gender = req.body.gender || user.gender;
-        user.collagemane = req.body.collagemane || user.collagemane;
+        user.collagename = req.body.collagename || user.collagename;
         user.department = req.body.department || user.department;
 
         // ================= IMAGE REPLACE LOGIC =================
