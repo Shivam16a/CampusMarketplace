@@ -19,6 +19,7 @@ const SellerInfo = ({ seller }) => {
 
       <p><strong>Name:</strong> {seller.username}</p>
       <p><strong>Email:</strong> {seller.email}</p>
+      <p><strong>College Name:</strong> {seller.collagename}</p>
     </div>
   );
 };

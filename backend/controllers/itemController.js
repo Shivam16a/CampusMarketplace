@@ -72,7 +72,7 @@ const getSingleItem = async (req, res) => {
     try {
         const item = await Item.findById(req.params.id).populate(
             "user",
-            "username email profilepic"
+            "username email profilepic collagename"
         );
 
         if (!item) {
