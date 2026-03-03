@@ -36,8 +36,14 @@ const AdminLayout = () => {
                             className={`nav-link text-white ${location.pathname.includes("users") && "bg-secondary"
                                 }`}
                         >
-                            <i className="fa fa-users me-2"></i>
-                            Manage Users
+                            <i className="fa fa-users me-2"></i>Manage Users
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/admin/sellerchart" className={`nav-link text-white ${location.pathname.includes("users") && "bg-secondary"
+                            }`}>
+                            <i className="fas fa-chart-line me-2"></i>
+                            Seller Dashboard
                         </Link>
                     </li>
 

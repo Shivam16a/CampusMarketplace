@@ -18,6 +18,7 @@ import SellerDashboardforseller from "./pages/seller/SellerDashboard";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ManageUsers from "./pages/admin/ManageUsers";
+import SellerDashboardforadmin from "./pages/seller/SellerDashboard";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="dashboard" element={<AdminDashboard />} />
             <Route path="users" element={<ManageUsers />} />
+            <Route path="sellerchart" element={<SellerDashboardforadmin />} />
           </Route>
         </Routes>
       </div>
