@@ -11,13 +11,14 @@ const RequestCard = ({ request, refresh }) => {
       alert("Action failed");
     }
   };
-
+  // console.log(request);
   return (
     <div className="card mb-3 shadow-sm">
       <div className="card-body">
-        <h5>{request.item.name}</h5>
-        <p>Price: ₹{request.item.price}</p>
-        <p>Buyer: {request.buyer.username}</p>
+        <h5>{request.item?.name}</h5>
+        <p>Price: ₹{request.item?.price}</p>
+        <p>Buyer: {request.buyer?.username}</p>
+        <p>Phone: {request.buyer?.phone}</p>
 
         <RequestStatusBadge status={request.status} />
 

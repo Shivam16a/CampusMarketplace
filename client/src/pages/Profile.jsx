@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/api";
+import RequestCard from "../components/Purchase/RequestCard";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [editMode, setEditMode] = useState(false);
+  const [requests, setRequests] = useState([]);
 
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-  // 🔥 Fetch Profile Function (Now outside useEffect)
+  const fetchRequests = async () => {
+    try {
+      const { data } = await API.get("/purchase/seller");
+      setRequests(data);
+    } catch (error) {
+      console.error("Failed to load requests");
+    }
+  };
+
+  // Fetch Profile Function (Now outside useEffect)
   const fetchProfile = async () => {
     try {
       const { data } = await API.get("/auth/profile");
@@ -19,6 +30,7 @@ const Profile = () => {
 
   useEffect(() => {
     fetchProfile();
+    fetchRequests();
   }, []);
 
   // 🔥 Handle Input Change
@@ -162,6 +174,24 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      {userInfo?.role === "seller"  && (<>
+        <div className="mt-4">
+          <h5>Purchase Requests</h5>
+
+          {requests.length === 0 ? (
+            <p>No requests yet</p>
+          ) : (
+            requests.map((req) => (
+              <RequestCard
+                key={req._id}
+                request={req}
+                refresh={fetchRequests}
+              />
+            ))
+          )}
+        </div>
+      </>)}
+
     </div>
   );
 };

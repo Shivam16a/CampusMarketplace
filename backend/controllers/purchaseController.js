@@ -44,7 +44,7 @@ const getSellerRequests = async (req, res) => {
       seller: req.user._id,
     })
       .populate("item", "name price images")
-      .populate("buyer", "username email");
+      .populate("buyer", "username email phone");
 
     res.json(requests);
   } catch (error) {
@@ -60,7 +60,7 @@ const getBuyerRequests = async (req, res) => {
       buyer: req.user._id,
     })
       .populate("item", "name price images status")
-      .populate("seller", "username email");
+      .populate("seller", "username email phone");
 
     res.json(requests);
   } catch (error) {

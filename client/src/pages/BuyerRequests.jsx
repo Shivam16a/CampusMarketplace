@@ -43,7 +43,8 @@ const BuyerRequests = () => {
                   <h5>{req.item.name}</h5>
                   <p>Price: ₹{req.item.price}</p>
                   <p>
-                    Seller: <strong>{req.seller.username}</strong>
+                    Seller: <strong>{req.seller.username}</strong><br />
+                    Phone: <strong>{req.seller.phone}</strong>
                   </p>
 
                   <p>

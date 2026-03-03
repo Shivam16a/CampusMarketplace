@@ -23,7 +23,7 @@ const Navbar = () => {
       <div className="container">
 
         <Link className="navbar-brand fw-bold text-primary" to="/">
-          <i className="fa fa-refresh me-2"></i>CampusMart
+          <img src="/vite.svg" alt="campusmart" width={40} /> CampusMart
         </Link>
 
         <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
