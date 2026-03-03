@@ -40,7 +40,7 @@ const AdminLayout = () => {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/admin/sellerchart" className={`nav-link text-white ${location.pathname.includes("users") && "bg-secondary"
+                        <Link to="/admin/sellerchart" className={`nav-link text-white ${location.pathname.includes("seller") && "bg-secondary"
                             }`}>
                             <i className="fas fa-chart-line me-2"></i>
                             Seller Dashboard
