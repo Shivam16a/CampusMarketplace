@@ -17,6 +17,17 @@ const Profile = () => {
       console.error("Failed to load requests");
     }
   };
+  //order list
+
+  const statusOrder = {
+    Pending: 1,
+    Rejected: 2,
+    Accepted: 3,
+  };
+
+  const sortedRequests = [...requests].sort(
+    (a, b) => statusOrder[a.status] - statusOrder[b.status]
+  );
 
   // Fetch Profile Function (Now outside useEffect)
   const fetchProfile = async () => {
@@ -165,28 +176,18 @@ const Profile = () => {
             </div>
 
             <hr className="my-4" />
-
-            <div className="text-center text-muted">
-              <i className="fa fa-th-large me-2"></i>
-              User Activity Coming Soon
-            </div>
-
           </div>
         </div>
       </div>
-      {userInfo?.role === "seller"  && (<>
+      {userInfo?.role === "seller" && (<>
         <div className="mt-4">
           <h5>Purchase Requests</h5>
 
           {requests.length === 0 ? (
             <p>No requests yet</p>
           ) : (
-            requests.map((req) => (
-              <RequestCard
-                key={req._id}
-                request={req}
-                refresh={fetchRequests}
-              />
+            sortedRequests.map((req) => (
+              <RequestCard key={req._id} request={req} refresh={fetchRequests} />
             ))
           )}
         </div>
