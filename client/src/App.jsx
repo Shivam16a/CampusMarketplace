@@ -19,13 +19,14 @@ import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ManageUsers from "./pages/admin/ManageUsers";
 import SellerDashboardforadmin from "./pages/seller/SellerDashboard";
+import ErrorPage from "./components/Error/Error";
 
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="container my-4">
+      <div className="">
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
           <Route path="/" element={<AllItems />} />
@@ -45,6 +46,7 @@ function App() {
             <Route path="users" element={<ManageUsers />} />
             <Route path="sellerchart" element={<SellerDashboardforadmin />} />
           </Route>
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
       <Footer />

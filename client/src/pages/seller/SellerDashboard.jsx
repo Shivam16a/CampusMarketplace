@@ -23,7 +23,6 @@ const SellerDashboard = () => {
             console.log("Failed to load stats");
         }
     };
-
     useEffect(() => {
         fetchStats();
     }, []);
