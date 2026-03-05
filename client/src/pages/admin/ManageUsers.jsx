@@ -1,17 +1,32 @@
 import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import API from "../../utils/api";
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([]);
+    const [search, setSearch] = useState("");
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const fetchUsers = async () => {
-        const { data } = await API.get("/auth/all");
-        setUsers(data);
+    const query = new URLSearchParams(location.search);
+    const keyword = query.get("search") || "";
+
+    const fetchUsers = async (searchKeyword = "") => {
+        try {
+            let url = "/auth/all"; // default: all users
+            if (searchKeyword) url = `/admin/search?search=${searchKeyword}`; // search query
+
+            const { data } = await API.get(url);
+            setUsers(data);
+        } catch (error) {
+            console.log(error.message);
+        }
     };
 
+
     useEffect(() => {
-        fetchUsers();
-    }, []);
+        fetchUsers(keyword);
+    }, [keyword]);
 
     const deleteUser = async (id) => {
         if (!window.confirm("Delete this user?")) return;
@@ -25,13 +40,28 @@ const ManageUsers = () => {
         fetchUsers();
     };
 
+    const handleBack = () => {
+        navigate("/admin/users"); 
+        setSearch(""); 
+    };
+
+
     return (
         <div>
             <h3 className="mb-4">
                 <i className="fa fa-users me-2"></i>
                 Manage Users
             </h3>
-
+            {/* 🔙 Back Button for Search */}
+            {keyword && (
+                <button
+                    className="btn btn-secondary mb-3"
+                    onClick={handleBack}
+                >
+                    <i className="fa fa-arrow-left me-2"></i>
+                    Back to All Users
+                </button>
+            )}
             <div className="table-responsive">
                 <table className="table table-bordered table-hover">
 

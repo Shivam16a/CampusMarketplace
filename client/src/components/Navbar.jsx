@@ -1,10 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("userInfo"));
-  const [keyword, setKeyword] = useState("");
+  const [search, setSearch] = useState("");
+  const location = useLocation();
 
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
@@ -13,10 +14,18 @@ const Navbar = () => {
 
   const searchHandler = (e) => {
     e.preventDefault();
-    if (keyword.trim()) {
-      navigate(`/?search=${keyword}`);
+    if (search.trim()) {
+      navigate(`/admin/users?search=${search}`);
+    } else {
+      navigate("/admin/users");
     }
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const keyword = params.get("search") || "";
+    setSearch(keyword);  
+  }, [location.search]);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
@@ -39,10 +48,10 @@ const Navbar = () => {
                 type="text"
                 className="form-control me-2"
                 placeholder="Admin Search..."
-                value={keyword}
-                onChange={(e) => setKeyword(e.target.value)}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
-              <button className="btn btn-outline-primary">
+              <button className="btn btn-outline-primary" onClick={searchHandler}>
                 <i className="fa fa-search"></i>
               </button>
             </form>
@@ -66,10 +75,10 @@ const Navbar = () => {
                     </li>
                   </>
                 )}
-                {user?.isAdmin &&(<>
+                {user?.isAdmin && (<>
                   <li className="nav-item">
                     <Link className="nav-link" to="/admin">
-                    <i className="fas fa-user-shield"></i> Admin
+                      <i className="fas fa-user-shield"></i> Admin
                     </Link>
                   </li>
                 </>)}

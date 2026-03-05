@@ -4,9 +4,12 @@ const router = express.Router();
 const {
   getAdminStats,
   toggleBanUser,
+  searchUsers,
 } = require("../controllers/adminController");
 
 const { protect, adminOnly } = require("../middleware/authMiddleware");
+
+router.get("/search",protect,adminOnly,searchUsers);
 
 // Dashboard Stats
 router.get("/stats", protect, adminOnly, getAdminStats);

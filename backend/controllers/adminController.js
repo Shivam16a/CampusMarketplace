@@ -1,5 +1,5 @@
 const User = require("../models/userModels");
-const Item = require("../models/itemModel"); 
+const Item = require("../models/itemModel");
 
 // ================= ADMIN DASHBOARD STATS =================
 const getAdminStats = async (req, res) => {
@@ -44,7 +44,30 @@ const toggleBanUser = async (req, res) => {
     }
 };
 
+// ================= SEARCH USERS =================
+const searchUsers = async (req, res) => {
+    try {
+        const keyword = req.query.search
+            ? {
+                $or: [
+                    { username: { $regex: req.query.search, $options: "i" } },
+                    { email: { $regex: req.query.search, $options: "i" } },
+                    { phone: { $regex: req.query.search, $options: "i" } },
+                    { collagename: { $regex: req.query.search, $options: "i" } },
+                ],
+            }
+            : {};
+
+        const users = await User.find(keyword).select("-password");
+
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ message: "Server Error" });
+    }
+};
+
 module.exports = {
     getAdminStats,
     toggleBanUser,
+    searchUsers
 };
