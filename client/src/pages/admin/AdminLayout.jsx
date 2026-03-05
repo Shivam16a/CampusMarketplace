@@ -40,13 +40,19 @@ const AdminLayout = () => {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/admin/sellerchart" className={`nav-link text-white ${location.pathname.includes("seller") && "bg-secondary"
+                        <Link to="/admin/sellerchart" className={`nav-link text-white ${location.pathname.includes("sellerchart") && "bg-secondary"
                             }`}>
-                            <i className="fas fa-chart-line me-2"></i>
+                            <i className="far fa-chart-bar me-2"></i>
                             Seller Dashboard
                         </Link>
                     </li>
-
+                    <li className="nav-item">
+                        <Link to="/admin/linesales" className={`nav-link text-white ${location.pathname.includes("linesales") && "bg-secondary"
+                            }`}>
+                                <i className="fas fa-chart-line me-2"></i>
+                                Item Sales Dashboard
+                        </Link>
+                    </li>
                 </ul>
             </div>
 
