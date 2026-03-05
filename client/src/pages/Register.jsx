@@ -48,6 +48,7 @@ const Register = () => {
       window.location.href = "/";
 
     } catch (err) {
+      alert(err.response?.data?.message);
       console.log(err.response?.data?.message  || "something wents wrong");
     }
   };
@@ -61,9 +62,9 @@ const Register = () => {
 
               {/* Title */}
               <div className="text-center mb-4">
-                <h3 className="fw-bold">Register</h3>
+                <h3 className="fw-bold"><img src="/vite.svg" width={40} alt="logo" /> Register</h3>
                 <p className="text-muted small">
-                  Create your ExchangeCircle account
+                  Create your CampusMart account
                 </p>
               </div>
 

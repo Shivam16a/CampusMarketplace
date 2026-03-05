@@ -30,6 +30,7 @@ const Login = () => {
       window.location.href = "/";
 
     } catch (err) {
+      alert(err.response?.data?.message);
       console.log(err.response?.data?.message  || "something wents wrong");
     }
   };
@@ -43,9 +44,9 @@ const Login = () => {
 
               {/* Title */}
               <div className="text-center mb-4">
-                <h3 className="fw-bold">Login</h3>
+                <h3 className="fw-bold"><img src="/vite.svg" width={40} alt="logo" /> Login</h3>
                 <p className="text-muted small">
-                  Welcome back to <span className="fw-semibold">ExchangeCircle</span>
+                  Welcome to <span className="fw-semibold">CampusMart</span>
                 </p>
               </div>
 
