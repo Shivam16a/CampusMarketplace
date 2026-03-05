@@ -1,4 +1,8 @@
 const express = require('express');
+const helmet = require('helmet');
+const xss = require('xss-clean');
+const mongoSanitize = require('express-mongo-sanitize');
+const rateLimit = require('express-rate-limit');
 const dotenv = require('dotenv');
 const connectDb = require('./config/DB.js');
 const cors = require('cors');
@@ -10,14 +14,25 @@ const sellerRoute = require('./routes/sellerRoutes.js');
 const adminRoutes = require("./routes/adminRoutes");
 
 const corseOption = {
-    origin:"http://localhost:5173",
-    method:['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    origin: "http://localhost:5173",
+    method: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     credentials: true
 }
 
 dotenv.config();
 const app = express();
 app.use(express.json());
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: "Too many requests from this IP, please try again later."
+});
+
+app.use(limiter);
+app.use(helmet());
+app.use(mongoSanitize());
+app.use(xss());
 
 app.use(cors(corseOption));
 app.use("/uploads", express.static("uploads"));
