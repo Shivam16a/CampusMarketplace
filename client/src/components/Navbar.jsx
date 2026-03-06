@@ -79,6 +79,12 @@ const Navbar = () => {
                         Help
                       </Link>
                     </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/contact">
+                        <i className="fas fa-id-card me-1"></i>
+                        Contact
+                      </Link>
+                    </li>
                   </>
                 )}
                 {user?.isAdmin && (<>

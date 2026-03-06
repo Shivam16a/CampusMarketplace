@@ -10,6 +10,7 @@ const wishlistRoutes = require("./routes/wishlistRoutes");
 const purchaseRoutes = require('./routes/purchaseRoutes.js');
 const sellerRoute = require('./routes/sellerRoutes.js');
 const adminRoutes = require("./routes/adminRoutes");
+const contactRoutes = require("./routes/contactRoutes.js");
 
 dotenv.config();
 const app = express();
@@ -44,6 +45,7 @@ app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/purchase", purchaseRoutes);
 app.use("/api/seller", sellerRoute);
 app.use("/api/admin", adminRoutes);
+app.use("/api/contact",contactRoutes);
 
 
 

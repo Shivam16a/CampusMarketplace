@@ -23,6 +23,7 @@ const SellerDashboardforadmin = lazy(() => import("./pages/seller/SellerDashboar
 const ErrorPage = lazy(() => import("./components/Error/Error"));
 const SalesLineChart = lazy(() => import("./pages/admin/SalesLineChart"));
 const HelpCenter = lazy(()=> import("./pages/HelpCenter"));
+const Contact = lazy(()=>import("./pages/Contact"));
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             <Route path="/my-requests" element={<BuyerRequests />} />
             <Route path="/item/:id" element={<ItemDetails />} />
             <Route path="/help" element={<HelpCenter/>}/>
+            <Route path="/contact" element={<Contact/>}/>
           </Route>
           <Route element={<ProtectedRoute allowedRoles={["seller"]} />}>
             <Route path="/add-item" element={<AddItem />} />

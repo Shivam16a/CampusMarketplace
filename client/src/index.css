@@ -1,0 +1,17 @@
+.contact-card {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn {
+    transition: all 0.25s ease;
+}
+
+.submit-btn:hover {
+    transform: scale(1.03);
+}
