@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/api";
+import { Link } from "react-router-dom";
 
 const BuyerRequests = () => {
   const [requests, setRequests] = useState([]);
@@ -41,22 +42,29 @@ const BuyerRequests = () => {
                 />
                 <div className="card-body">
                   <h5>{req.item.name}</h5>
-                  <p>Price: ₹{req.item.price}</p>
                   <p>
+                    Price: ₹{req.item.price}<br />
                     Seller: <strong>{req.seller.username}</strong><br />
-                    Phone: <strong>{req.seller.phone}</strong>
+                    <Link
+                      className="text-decoration-none text-body d-inline-block"
+                      to={`https://wa.me/${req.seller.phone}?text=Hello%20${req.seller.username}%2C%20I%20want%20to%20ask%20about%20This%20product%20${req.item.name}%20you%20are%20selling%20on%CampusMart`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fa-brands fa-whatsapp me-1 text-success fs-5"></i>
+                      <strong>:{req.seller.phone}</strong>
+                    </Link>
                   </p>
 
                   <p>
                     Status:{" "}
                     <span
-                      className={`badge ${
-                        req.status === "Pending"
-                          ? "bg-warning"
-                          : req.status === "Accepted"
+                      className={`badge ${req.status === "Pending"
+                        ? "bg-warning"
+                        : req.status === "Accepted"
                           ? "bg-success"
                           : "bg-danger"
-                      }`}
+                        }`}
                     >
                       {req.status}
                     </span>

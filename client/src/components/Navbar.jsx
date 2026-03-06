@@ -24,7 +24,7 @@ const Navbar = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const keyword = params.get("search") || "";
-    setSearch(keyword);  
+    setSearch(keyword);
   }, [location.search]);
 
   return (
@@ -70,7 +70,13 @@ const Navbar = () => {
                   <>
                     <li className="nav-item">
                       <Link to="/my-requests" className="nav-link">
-                        <i className="fas fa-shopping-cart"></i> My order
+                        <i className="fas fa-shopping-cart me-1"></i> My order
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to="/help" className="nav-link">
+                        <i className="fas fa-hands-helping me-1"></i>
+                        Help
                       </Link>
                     </li>
                   </>

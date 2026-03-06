@@ -1,55 +1,63 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Profile from "./pages/Profile";
-import AllItems from "./pages/AllItems";
-import AddItem from "./pages/AddItem";
-import ItemDetails from "./pages/ItemDetails";
-import EditItem from "./pages/EditItem";
-import SellerDashboard from "./pages/SellerDashboard";
-import SellerRequests from "./pages/SellerRequests";
-import BuyerRequests from "./pages/BuyerRequests";
-import SellerDashboardforseller from "./pages/seller/SellerDashboard";
-import AdminLayout from "./pages/admin/AdminLayout";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import ManageUsers from "./pages/admin/ManageUsers";
-import SellerDashboardforadmin from "./pages/seller/SellerDashboard";
-import ErrorPage from "./components/Error/Error";
-import SalesLineChart from "./pages/admin/SalesLineChart";
 import ProtectedRoute from "./components/ProtectedRoute";
+import "./App.css";
+
+//lazy loading page 
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
+const Profile = lazy(() => import("./pages/Profile"));
+const AllItems = lazy(() => import("./pages/AllItems"));
+const AddItem = lazy(() => import("./pages/AddItem"));
+const ItemDetails = lazy(() => import("./pages/ItemDetails"));
+const EditItem = lazy(() => import("./pages/EditItem"));
+const SellerDashboard = lazy(() => import("./pages/SellerDashboard"));
+const SellerRequests = lazy(() => import("./pages/SellerRequests"));
+const BuyerRequests = lazy(() => import("./pages/BuyerRequests"));
+const SellerDashboardforseller = lazy(() => import("./pages/seller/SellerDashboard"));
+const AdminLayout = lazy(() => import("./pages/admin/AdminLayout"));
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
+const ManageUsers = lazy(() => import("./pages/admin/ManageUsers"));
+const SellerDashboardforadmin = lazy(() => import("./pages/seller/SellerDashboard"));
+const ErrorPage = lazy(() => import("./components/Error/Error"));
+const SalesLineChart = lazy(() => import("./pages/admin/SalesLineChart"));
+const HelpCenter = lazy(()=> import("./pages/HelpCenter"));
 
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/" element={<AllItems />} />
-        <Route element={<ProtectedRoute allowedRoles={["user", "seller"]} />}>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/my-requests" element={<BuyerRequests />} />
-        </Route>
-        <Route element={<ProtectedRoute allowedRoles={["seller"]} />}>
-          <Route path="/add-item" element={<AddItem />} />
-          <Route path="/item/:id" element={<ItemDetails />} />
-          <Route path="/edit-item/:id" element={<EditItem />} />
-          <Route path="/seller-dashboard" element={<SellerDashboard />} />
-          <Route path="/seller-requests" element={<SellerRequests />} />
-          <Route path="/sellerchart" element={<SellerDashboardforseller />} />
-        </Route>
-        <Route element={<ProtectedRoute adminOnly={true} />}>
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="users" element={<ManageUsers />} />
-            <Route path="linesales" element={<SalesLineChart />} />
-            <Route path="sellerchart" element={<SellerDashboardforadmin />} />
+      <Suspense fallback={<div className="loder"></div>}>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<AllItems />} />
+          <Route element={<ProtectedRoute allowedRoles={["user", "seller"]} />}>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/my-requests" element={<BuyerRequests />} />
+            <Route path="/item/:id" element={<ItemDetails />} />
+            <Route path="/help" element={<HelpCenter/>}/>
           </Route>
-        </Route>
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+          <Route element={<ProtectedRoute allowedRoles={["seller"]} />}>
+            <Route path="/add-item" element={<AddItem />} />
+            <Route path="/edit-item/:id" element={<EditItem />} />
+            <Route path="/seller-dashboard" element={<SellerDashboard />} />
+            <Route path="/seller-requests" element={<SellerRequests />} />
+            <Route path="/sellerchart" element={<SellerDashboardforseller />} />
+          </Route>
+          <Route element={<ProtectedRoute adminOnly={true} />}>
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="users" element={<ManageUsers />} />
+              <Route path="linesales" element={<SalesLineChart />} />
+              <Route path="sellerchart" element={<SellerDashboardforadmin />} />
+            </Route>
+          </Route>
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

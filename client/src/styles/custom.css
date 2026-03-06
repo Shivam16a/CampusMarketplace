@@ -1,0 +1,25 @@
+.help-page .accordion-item {
+    transition: all 0.3s ease;
+}
+
+.help-page .accordion-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.help-page .list-group-item {
+    transition: all 0.3s ease;
+}
+
+.help-page .list-group-item:hover {
+    background-color: #f8f9fa;
+    transform: translateX(5px);
+}
+
+.help-page button {
+    transition: all 0.3s ease;
+}
+
+.help-page button:hover {
+    transform: scale(1.05);
+}
