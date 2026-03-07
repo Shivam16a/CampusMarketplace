@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import NotificationBell from "./NotificationBell"
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -66,6 +67,9 @@ const Navbar = () => {
                     <i className="fa fa-user me-1"></i>Profile
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <NotificationBell />
+                </li>
                 {user?.role !== "seller" && (
                   <>
                     <li className="nav-item">
@@ -91,6 +95,12 @@ const Navbar = () => {
                   <li className="nav-item">
                     <Link className="nav-link" to="/admin">
                       <i className="fas fa-user-shield"></i> Admin
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/send-notification">
+                      <i className="fa fa-bell me-1"></i>
+                      Send Notification
                     </Link>
                   </li>
                 </>)}

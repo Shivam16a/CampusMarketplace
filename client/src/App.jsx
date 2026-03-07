@@ -24,6 +24,7 @@ const ErrorPage = lazy(() => import("./components/Error/Error"));
 const SalesLineChart = lazy(() => import("./pages/admin/SalesLineChart"));
 const HelpCenter = lazy(()=> import("./pages/HelpCenter"));
 const Contact = lazy(()=>import("./pages/Contact"));
+const SendNotification = lazy(()=> import("./components/SendNotification"));
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
             <Route path="/seller-dashboard" element={<SellerDashboard />} />
             <Route path="/seller-requests" element={<SellerRequests />} />
             <Route path="/sellerchart" element={<SellerDashboardforseller />} />
+            <Route path="/send-notification" element={<SendNotification/>}/>
           </Route>
           <Route element={<ProtectedRoute adminOnly={true} />}>
             <Route path="/admin" element={<AdminLayout />}>
