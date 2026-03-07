@@ -64,6 +64,7 @@ const Login = () => {
                     name="email"
                     className="form-control form-control-lg"
                     placeholder="Enter your email"
+                    autoComplete="off"
                     value={formData.email}
                     onChange={handleChange}
                     required
@@ -81,6 +82,7 @@ const Login = () => {
                     name="password"
                     className="form-control form-control-lg"
                     placeholder="Enter your password"
+                    autoComplete="off"
                     value={formData.password}
                     onChange={handleChange}
                     required

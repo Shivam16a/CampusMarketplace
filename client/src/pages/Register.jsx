@@ -82,6 +82,7 @@ const Register = () => {
                       name="username"
                       className="form-control"
                       placeholder="Enter username"
+                      autoComplete="off"
                       onChange={handleChange}
                       required
                     />
@@ -98,6 +99,7 @@ const Register = () => {
                       name="email"
                       className="form-control"
                       placeholder="Enter email"
+                      autoComplete="off"
                       onChange={handleChange}
                       required
                     />
@@ -114,6 +116,7 @@ const Register = () => {
                       name="phone"
                       className="form-control"
                       placeholder="Enter phone number"
+                      autoComplete="off"
                       onChange={handleChange}
                       required
                     />
@@ -149,6 +152,7 @@ const Register = () => {
                       name="collagename"
                       className="form-control"
                       placeholder="Enter college name"
+                      autoComplete="off"
                       onChange={handleChange}
                       required
                     />
@@ -165,6 +169,7 @@ const Register = () => {
                       name="department"
                       className="form-control"
                       placeholder="Enter department"
+                      autoComplete="off"
                       onChange={handleChange}
                       required
                     />
@@ -194,6 +199,7 @@ const Register = () => {
                       name="password"
                       className="form-control"
                       placeholder="Enter password"
+                      autoComplete="off"
                       onChange={handleChange}
                       required
                     />

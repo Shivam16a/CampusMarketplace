@@ -45,12 +45,13 @@ app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/purchase", purchaseRoutes);
 app.use("/api/seller", sellerRoute);
 app.use("/api/admin", adminRoutes);
-app.use("/api/contact",contactRoutes);
+app.use("/api/contact", contactRoutes);
 
 
 
 const PORT = process.env.PORT || 5050;
-app.listen(PORT, () => {
-    console.log(`Server is running on PORT :${PORT}`);
-    connectDb();
+connectDb().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on PORT :${PORT}`);
+    });
 });
