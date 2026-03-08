@@ -52,7 +52,7 @@ const ManageUsers = () => {
                 <i className="fa fa-users me-2"></i>
                 Manage Users
             </h3>
-            {/* 🔙 Back Button for Search */}
+            {/* Back Button for Search */}
             {keyword && (
                 <button
                     className="btn btn-secondary mb-3"

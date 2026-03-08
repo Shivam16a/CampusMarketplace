@@ -22,9 +22,10 @@ const ManageUsers = lazy(() => import("./pages/admin/ManageUsers"));
 const SellerDashboardforadmin = lazy(() => import("./pages/seller/SellerDashboard"));
 const ErrorPage = lazy(() => import("./components/Error/Error"));
 const SalesLineChart = lazy(() => import("./pages/admin/SalesLineChart"));
-const HelpCenter = lazy(()=> import("./pages/HelpCenter"));
-const Contact = lazy(()=>import("./pages/Contact"));
-const SendNotification = lazy(()=> import("./components/SendNotification"));
+const HelpCenter = lazy(() => import("./pages/HelpCenter"));
+const Contact = lazy(() => import("./pages/Contact"));
+const SendNotification = lazy(() => import("./components/SendNotification"));
+const ManageContacts = lazy(() => import("./pages/admin/ManageContacts"));
 
 
 function App() {
@@ -40,8 +41,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/my-requests" element={<BuyerRequests />} />
             <Route path="/item/:id" element={<ItemDetails />} />
-            <Route path="/help" element={<HelpCenter/>}/>
-            <Route path="/contact" element={<Contact/>}/>
+            <Route path="/help" element={<HelpCenter />} />
+            <Route path="/contact" element={<Contact />} />
           </Route>
           <Route element={<ProtectedRoute allowedRoles={["seller"]} />}>
             <Route path="/add-item" element={<AddItem />} />
@@ -49,12 +50,13 @@ function App() {
             <Route path="/seller-dashboard" element={<SellerDashboard />} />
             <Route path="/seller-requests" element={<SellerRequests />} />
             <Route path="/sellerchart" element={<SellerDashboardforseller />} />
-            <Route path="/send-notification" element={<SendNotification/>}/>
+            <Route path="/send-notification" element={<SendNotification />} />
           </Route>
           <Route element={<ProtectedRoute adminOnly={true} />}>
             <Route path="/admin" element={<AdminLayout />}>
               <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="users" element={<ManageUsers />} />
+              <Route path="contact" element={<ManageContacts />} />
               <Route path="linesales" element={<SalesLineChart />} />
               <Route path="sellerchart" element={<SellerDashboardforadmin />} />
             </Route>

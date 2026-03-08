@@ -23,7 +23,7 @@ const ItemCarousel = ({ images }) => {
               src={`http://localhost:6550/uploads/${img}`}
               className="d-block w-100"
               alt="item"
-              style={{ height: "400px", objectFit: "cover" }}
+              style={{ height: "600px", objectFit: "cover",}}
             />
           </div>
         ))}
