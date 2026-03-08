@@ -42,6 +42,7 @@ const Contact = () => {
             <div className="col-lg-6 order-lg-2 order-1 mb-4 mb-lg-0">
                 <div className="card shadow border-0 p-4 contact-card">
                     <h4 className="mb-4 text-center text-primary">
+                        <img src="/vite.svg" alt="logo" width={35} className="me-2" />
                         Get in Touch with CampusMart
                     </h4>
 
