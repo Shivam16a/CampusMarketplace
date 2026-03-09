@@ -46,7 +46,7 @@ const AdminLayout = () => {
                             className={`nav-link text-white ${location.pathname.includes("contact") && "bg-secondary"
                                 }`}
                         >
-                            <i className="fas fa-address-book me-2"></i>All Contact Details
+                            <i className="fas fa-address-book me-2"></i>All Contacts
                         </Link>
                     </li>
 
@@ -61,7 +61,7 @@ const AdminLayout = () => {
                         <Link to="/admin/linesales" className={`nav-link text-white ${location.pathname.includes("linesales") && "bg-secondary"
                             }`}>
                             <i className="fas fa-chart-line me-2"></i>
-                            Item Sales Dashboard
+                            Item  Dashboard
                         </Link>
                     </li>
                 </ul>
