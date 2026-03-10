@@ -26,6 +26,7 @@ const HelpCenter = lazy(() => import("./pages/HelpCenter"));
 const Contact = lazy(() => import("./pages/Contact"));
 const SendNotification = lazy(() => import("./components/SendNotification"));
 const ManageContacts = lazy(() => import("./pages/admin/ManageContacts"));
+const AdminFeedback = lazy(() => import("./pages/admin/AdminFeedback"));
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
               <Route path="contact" element={<ManageContacts />} />
               <Route path="linesales" element={<SalesLineChart />} />
               <Route path="sellerchart" element={<SellerDashboardforadmin />} />
+              <Route path="feedback" element={<AdminFeedback />} />
             </Route>
           </Route>
           <Route path="*" element={<ErrorPage />} />

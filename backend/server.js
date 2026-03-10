@@ -12,6 +12,7 @@ const sellerRoute = require('./routes/sellerRoutes.js');
 const adminRoutes = require("./routes/adminRoutes");
 const contactRoutes = require("./routes/contactRoutes.js");
 const notificationRoutes = require('./routes/notificationRoutes.js');
+const feedbackRoutes = require("./routes/feedbackRoutes");
 
 dotenv.config();
 const app = express();
@@ -48,6 +49,7 @@ app.use("/api/seller", sellerRoute);
 app.use("/api/admin", adminRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/notifications",notificationRoutes);
+app.use("/api/feedback",feedbackRoutes);
 
 
 

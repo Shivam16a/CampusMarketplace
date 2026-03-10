@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import API from "../utils/api";
 import "../index.css";
+import FeedbackPage from "./FeedbackPage"
 
 const Contact = () => {
 
@@ -127,8 +128,9 @@ const Contact = () => {
             </div>
 
         </div>
+        <FeedbackPage />
         <h3 className="text-center mt-5 mb-3 text-primary">
-        <i className="fas fa-map-marker-alt me-2"></i> Our Location
+            <i className="fas fa-map-marker-alt me-2"></i> Our Location
         </h3>
         <div className="map-container mt-4">
 
@@ -139,6 +141,7 @@ const Contact = () => {
                 referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
         </div>
+
     </div>
 
     );

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import "../styles/custom.css";
+import FeedbackCarousel from "../components/FeedbackCarousel";
 
 const HelpCenter = () => {
     return (
@@ -132,19 +133,9 @@ const HelpCenter = () => {
                 <li className="list-group-item">Do not post fake or misleading listings.</li>
             </ul>
 
-            {/* Report Item */}
+            {/* users feedback */}
 
-            <h3 className="mt-5 mb-3 text-danger">
-                <i className="fa-solid fa-flag me-2"></i>
-                Report an Item
-            </h3>
-
-            <p>If you find a suspicious or fake listing, please report it to the admin.</p>
-
-            <button className="btn btn-danger px-4 shadow">
-                <i className="fa-solid fa-triangle-exclamation me-2"></i>
-                Report Listing
-            </button>
+            <FeedbackCarousel />
 
             {/* Contact Support */}
 
@@ -165,7 +156,6 @@ const HelpCenter = () => {
                     Phone: +91 8002632535
                 </li>
             </ul>
-
         </motion.div>
     );
 };

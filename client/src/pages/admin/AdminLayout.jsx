@@ -51,6 +51,16 @@ const AdminLayout = () => {
                     </li>
 
                     <li className="nav-item">
+                        <Link
+                            to="/admin/feedback"
+                            className={`nav-link text-white ${location.pathname.includes("feedback") && "bg-secondary"
+                                }`}
+                        >
+                            <i className="far fa-comment-alt me-2"></i>All Feedback
+                        </Link>
+                    </li>
+
+                    <li className="nav-item">
                         <Link to="/admin/sellerchart" className={`nav-link text-white ${location.pathname.includes("sellerchart") && "bg-secondary"
                             }`}>
                             <i className="far fa-chart-bar me-2"></i>
