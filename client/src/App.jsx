@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
 
@@ -65,6 +66,7 @@ function App() {
           </Route>
           <Route path="*" element={<ErrorPage />} />
         </Routes>
+        <Footer />
       </Suspense>
     </BrowserRouter>
   );

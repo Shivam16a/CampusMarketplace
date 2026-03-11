@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import NotificationBell from "./NotificationBell"
+import { useEffect, useState, Suspense, lazy } from "react";
+
+const NotificationBell = lazy(() => import("./NotificationBell"));
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -68,7 +69,9 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <NotificationBell />
+                  <Suspense>
+                    <NotificationBell />
+                  </Suspense>
                 </li>
                 {user?.role !== "seller" && (
                   <>

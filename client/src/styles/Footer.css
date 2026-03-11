@@ -1,0 +1,56 @@
+.campus-footer {
+    background: linear-gradient(135deg, #111, #1a1a1a, #000);
+    padding-bottom: 20px;
+}
+
+.footer-text {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-title {
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #bbb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ffb300;
+    padding-left: 5px;
+}
+
+.social-icons i {
+    font-size: 18px;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-icons i:hover {
+    color: #ffb300;
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    text-align: center;
+    padding-top: 15px;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #888;
+}
