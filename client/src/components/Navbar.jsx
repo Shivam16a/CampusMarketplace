@@ -1,12 +1,11 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState, Suspense, lazy } from "react";
+import { useState, Suspense, lazy } from "react";
 
 const NotificationBell = lazy(() => import("./NotificationBell"));
 
 const Navbar = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("userInfo"));
-  const [search, setSearch] = useState("");
   const location = useLocation();
 
   const logoutHandler = () => {
@@ -23,11 +22,10 @@ const Navbar = () => {
     }
   };
 
-  useEffect(() => {
+  const [search, setSearch] = useState(() => {
     const params = new URLSearchParams(location.search);
-    const keyword = params.get("search") || "";
-    setSearch(keyword);
-  }, [location.search]);
+    return params.get("search") || "";
+  });
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
@@ -53,7 +51,7 @@ const Navbar = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
-              <button className="btn btn-outline-primary" onClick={searchHandler}>
+              <button className="btn btn-outline-primary" type="submit">
                 <i className="fa fa-search"></i>
               </button>
             </form>
@@ -69,7 +67,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Suspense>
+                  <Suspense fallback={<span className="nav-link">...</span>}>
                     <NotificationBell />
                   </Suspense>
                 </li>

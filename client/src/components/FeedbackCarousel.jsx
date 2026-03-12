@@ -11,12 +11,17 @@ const FeedbackCarousel = () => {
 
     const [feedback, setFeedback] = useState([]);
 
-    const fetchFeedback = async () => {
-        const { data } = await API.get("/feedback/public");
-        setFeedback(data);
-    };
 
     useEffect(() => {
+        const fetchFeedback = async () => {
+            try {
+                const { data } = await API.get("/feedback/public");
+                setFeedback(data);
+            } catch (error) {
+                console.error(error.message);
+            }
+        };
+
         fetchFeedback();
     }, []);
 

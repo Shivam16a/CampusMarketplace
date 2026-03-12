@@ -133,11 +133,12 @@ const Contact = () => {
             <i className="fas fa-map-marker-alt me-2"></i> Our Location
         </h3>
         <div className="map-container mt-4">
-
             <iframe
+                title="Kazipur Thathan Location Map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7187.138057014299!2d85.2465024987636!3d25.751762023581904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed5d4009481a0f%3A0x416c9b68bcfea78!2sKazipur%20Thathan%2C%20Bihar!5e0!3m2!1sen!2sin!4v1773034683433!5m2!1sen!2sin"
                 className="map-frame"
                 loading="lazy"
+                allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
         </div>
