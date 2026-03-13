@@ -1,17 +1,17 @@
-const User = require("../models/userModels");
-const Item = require("../models/itemModel");
+const User = require('../models/userModels');
+const Item = require('../models/itemModel');
 
 // ================= ADMIN DASHBOARD STATS =================
 const getAdminStats = async (req, res) => {
     try {
         const totalUsers = await User.countDocuments();
-        const totalSellers = await User.countDocuments({ role: "seller" });
+        const totalSellers = await User.countDocuments({ role: 'seller' });
         const bannedUsers = await User.countDocuments({ isBanned: true });
 
         const totalItems = await Item.countDocuments();
 
         // Unique colleges
-        const colleges = await User.distinct("collagename");
+        const colleges = await User.distinct('collagename');
 
         res.json({
             totalUsers,
@@ -22,7 +22,8 @@ const getAdminStats = async (req, res) => {
             colleges,
         });
     } catch (error) {
-        res.status(500).json({ message: "Server Error" });
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
     }
 };
 
@@ -32,15 +33,16 @@ const toggleBanUser = async (req, res) => {
         const user = await User.findById(req.params.id);
 
         if (!user) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: 'User not found' });
         }
 
         user.isBanned = !user.isBanned;
         await user.save();
 
-        res.json({ message: "User ban status updated" });
+        res.json({ message: 'User ban status updated' });
     } catch (error) {
-        res.status(500).json({ message: "Server Error" });
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
     }
 };
 
@@ -50,19 +52,20 @@ const searchUsers = async (req, res) => {
         const keyword = req.query.search
             ? {
                 $or: [
-                    { username: { $regex: req.query.search, $options: "i" } },
-                    { email: { $regex: req.query.search, $options: "i" } },
-                    { phone: { $regex: req.query.search, $options: "i" } },
-                    { collagename: { $regex: req.query.search, $options: "i" } },
+                    { username: { $regex: req.query.search, $options: 'i' } },
+                    { email: { $regex: req.query.search, $options: 'i' } },
+                    { phone: { $regex: req.query.search, $options: 'i' } },
+                    { collagename: { $regex: req.query.search, $options: 'i' } },
                 ],
             }
             : {};
 
-        const users = await User.find(keyword).select("-password");
+        const users = await User.find(keyword).select('-password');
 
         res.json(users);
     } catch (error) {
-        res.status(500).json({ message: "Server Error" });
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
     }
 };
 

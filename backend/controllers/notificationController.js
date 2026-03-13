@@ -1,5 +1,5 @@
-const Notification = require("../models/notificationModel.js");
-const User = require("../models/userModels.js");
+const Notification = require('../models/notificationModel.js');
+const User = require('../models/userModels.js');
 
 
 // Admin / Seller send notification to user
@@ -7,9 +7,9 @@ exports.sendNotification = async (req, res) => {
     try {
 
         // permission check
-        if (req.user.role !== "admin" && req.user.role !== "seller") {
+        if (req.user.role !== 'admin' && req.user.role !== 'seller') {
             return res.status(403).json({
-                message: "Not authorized to send notification",
+                message: 'Not authorized to send notification',
             });
         }
 
@@ -19,7 +19,7 @@ exports.sendNotification = async (req, res) => {
 
         if (!user) {
             return res.status(404).json({
-                message: "User not found",
+                message: 'User not found',
             });
         }
 
@@ -30,7 +30,7 @@ exports.sendNotification = async (req, res) => {
         });
 
         res.json({
-            message: "Notification sent successfully",
+            message: 'Notification sent successfully',
             notification,
         });
 
@@ -45,7 +45,7 @@ exports.getNotifications = async (req, res) => {
     try {
 
         const notifications = await Notification.find({ user: req.user._id })
-            .populate("sender", "username")
+            .populate('sender', 'username')
             .sort({ createdAt: -1 });
 
         res.json(notifications);
@@ -66,7 +66,7 @@ exports.markAsRead = async (req, res) => {
         );
 
         res.json({
-            message: "Notification marked as read",
+            message: 'Notification marked as read',
         });
 
     } catch (error) {
@@ -82,7 +82,7 @@ exports.deleteNotification = async (req, res) => {
         await Notification.findByIdAndDelete(req.params.id);
 
         res.json({
-            message: "Notification deleted",
+            message: 'Notification deleted',
         });
 
     } catch (error) {

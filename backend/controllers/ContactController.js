@@ -1,4 +1,4 @@
-const Contact = require("../models/ContactModel.js");
+const Contact = require('../models/ContactModel.js');
 
 // Send Message
 const sendMessage = async (req, res) => {
@@ -9,7 +9,7 @@ const sendMessage = async (req, res) => {
         if (!name || !email || !message) {
             return res.status(400).json({
                 success: false,
-                message: "All fields are required"
+                message: 'All fields are required'
             });
         }
 
@@ -23,7 +23,7 @@ const sendMessage = async (req, res) => {
 
         res.status(201).json({
             success: true,
-            message: "Message sent successfully"
+            message: 'Message sent successfully'
         });
 
     } catch (error) {

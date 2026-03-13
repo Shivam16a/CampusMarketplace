@@ -1,4 +1,4 @@
-const Feedback = require("../models/FeedbackModel.js");
+const Feedback = require('../models/FeedbackModel.js');
 
 
 // create feedback
@@ -28,7 +28,7 @@ exports.getFeedback = async (req, res) => {
 
         const feedback = await Feedback
             .find()
-            .populate("user", "username email");
+            .populate('user', 'username email');
 
         res.json(feedback);
 
@@ -45,7 +45,7 @@ exports.deleteFeedback = async (req, res) => {
 
         await Feedback.findByIdAndDelete(req.params.id);
 
-        res.json({ message: "Feedback deleted" });
+        res.json({ message: 'Feedback deleted' });
 
     } catch (err) {
         res.status(500).json(err);
@@ -58,7 +58,7 @@ exports.getPublicFeedback = async (req, res) => {
 
         const feedback = await Feedback
             .find()
-            .populate("user", "username profilepic")
+            .populate('user', 'username profilepic')
             .sort({ createdAt: -1 })
             .limit(10);
 

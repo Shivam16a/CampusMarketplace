@@ -1,14 +1,14 @@
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../models/userModels.js");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('../models/userModels.js');
 // Required for deleting old profile image
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
 // Generate Token
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
-        expiresIn: "30d",
+        expiresIn: '30d',
     });
 };
 
@@ -26,11 +26,11 @@ const registerUser = async (req, res) => {
         } = req.body;
 
         // Agar image upload hui hai to filename lo
-        const profilepic = req.file ? req.file.filename : "";
+        const profilepic = req.file ? req.file.filename : '';
 
         const userExists = await User.findOne({ email });
         if (userExists) {
-            return res.status(400).json({ message: "User already exists" });
+            return res.status(400).json({ message: 'User already exists' });
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -68,13 +68,13 @@ const loginUser = async (req, res) => {
         const user = await User.findOne({ email });
 
         if (!user) {
-            return res.status(400).json({ message: "Invalid Credential" });
+            return res.status(400).json({ message: 'Invalid Credential' });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
-            return res.status(400).json({ message: "Invalid Credential" });
+            return res.status(400).json({ message: 'Invalid Credential' });
         }
 
         res.json({
@@ -95,7 +95,7 @@ const loginUser = async (req, res) => {
 // ================= GET PROFILE =================
 const getProfile = async (req, res) => {
     try {
-        const user = await User.findById(req.user._id).select("-password");
+        const user = await User.findById(req.user._id).select('-password');
         res.json(user);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -108,7 +108,7 @@ const updateProfile = async (req, res) => {
         const user = await User.findById(req.user._id);
 
         if (!user) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: 'User not found' });
         }
 
         // Update basic fields
@@ -124,7 +124,7 @@ const updateProfile = async (req, res) => {
 
             // Agar pehle se profile pic hai to delete karo
             if (user.profilepic) {
-                const oldImagePath = path.join("uploads", user.profilepic);
+                const oldImagePath = path.join('uploads', user.profilepic);
 
                 if (fs.existsSync(oldImagePath)) {
                     fs.unlinkSync(oldImagePath); // delete old image
@@ -163,12 +163,12 @@ const deleteProfile = async (req, res) => {
         const user = await User.findById(req.user._id);
 
         if (!user) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: 'User not found' });
         }
 
         await user.deleteOne();
 
-        res.json({ message: "Account deleted successfully" });
+        res.json({ message: 'Account deleted successfully' });
 
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -181,7 +181,7 @@ const adminUpdateUser = async (req, res) => {
         const user = await User.findById(req.params.id);
 
         if (!user) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: 'User not found' });
         }
 
         user.username = req.body.username || user.username;
@@ -192,7 +192,7 @@ const adminUpdateUser = async (req, res) => {
         if (req.file) {
 
             if (user.profilepic) {
-                const oldImagePath = path.join("uploads", user.profilepic);
+                const oldImagePath = path.join('uploads', user.profilepic);
 
                 if (fs.existsSync(oldImagePath)) {
                     fs.unlinkSync(oldImagePath);
@@ -219,12 +219,12 @@ const adminDeleteUser = async (req, res) => {
         const user = await User.findById(req.params.id);
 
         if (!user) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: 'User not found' });
         }
 
         await user.deleteOne();
 
-        res.json({ message: "User deleted by admin" });
+        res.json({ message: 'User deleted by admin' });
 
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -234,10 +234,11 @@ const adminDeleteUser = async (req, res) => {
 // Get All Users (Admin)
 const getAllUsers = async (req, res) => {
     try {
-        const users = await User.find().select("-password");
+        const users = await User.find().select('-password');
         res.json(users);
     } catch (error) {
-        res.status(500).json({ message: "Server Error" });
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
     }
 };
 

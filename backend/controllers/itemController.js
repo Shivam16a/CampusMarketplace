@@ -1,4 +1,4 @@
-const Item = require("../models/itemModel");
+const Item = require('../models/itemModel');
 
 // ================= ADD ITEM =================
 const addItem = async (req, res) => {
@@ -37,7 +37,7 @@ const getItems = async (req, res) => {
 
         // Search by name
         if (keyword) {
-            query.name = { $regex: keyword, $options: "i" };
+            query.name = { $regex: keyword, $options: 'i' };
         }
 
         // Filter by category
@@ -58,7 +58,7 @@ const getItems = async (req, res) => {
         }
 
         const items = await Item.find(query)
-            .populate("user", "username profilepic")
+            .populate('user', 'username profilepic')
             .sort({ createdAt: -1 });
 
         res.json(items);
@@ -71,12 +71,12 @@ const getItems = async (req, res) => {
 const getSingleItem = async (req, res) => {
     try {
         const item = await Item.findById(req.params.id).populate(
-            "user",
-            "username email profilepic collagename"
+            'user',
+            'username email profilepic collagename'
         );
 
         if (!item) {
-            return res.status(404).json({ message: "Item not found" });
+            return res.status(404).json({ message: 'Item not found' });
         }
 
         res.json(item);
@@ -91,12 +91,12 @@ const updateItem = async (req, res) => {
         const item = await Item.findById(req.params.id);
 
         if (!item) {
-            return res.status(404).json({ message: "Item not found" });
+            return res.status(404).json({ message: 'Item not found' });
         }
 
         // Only owner can update
         if (item.user.toString() !== req.user._id.toString()) {
-            return res.status(403).json({ message: "Not authorized" });
+            return res.status(403).json({ message: 'Not authorized' });
         }
 
         item.name = req.body.name || item.name;
@@ -122,7 +122,7 @@ const deleteItem = async (req, res) => {
         const item = await Item.findById(req.params.id);
 
         if (!item) {
-            return res.status(404).json({ message: "Item not found" });
+            return res.status(404).json({ message: 'Item not found' });
         }
 
         // Only owner or admin
@@ -130,12 +130,12 @@ const deleteItem = async (req, res) => {
             item.user.toString() !== req.user._id.toString() &&
             !req.user.isAdmin
         ) {
-            return res.status(403).json({ message: "Not authorized" });
+            return res.status(403).json({ message: 'Not authorized' });
         }
 
         await item.deleteOne();
 
-        res.json({ message: "Item deleted successfully" });
+        res.json({ message: 'Item deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -159,22 +159,22 @@ const updateItemStatus = async (req, res) => {
         const item = await Item.findById(req.params.id);
 
         if (!item) {
-            return res.status(404).json({ message: "Item not found" });
+            return res.status(404).json({ message: 'Item not found' });
         }
 
         if (!req.user) {
-            return res.status(401).json({ message: "Not authorized" });
+            return res.status(401).json({ message: 'Not authorized' });
         }
 
         // 🔥 owner check using user field
         if (item.user.toString() !== req.user._id.toString()) {
-            return res.status(401).json({ message: "Not authorized" });
+            return res.status(401).json({ message: 'Not authorized' });
         }
 
         item.status = req.body.status;
         await item.save();
 
-        res.json({ message: "Status updated successfully" });
+        res.json({ message: 'Status updated successfully' });
 
     } catch (error) {
         console.error(error);

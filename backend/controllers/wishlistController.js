@@ -1,5 +1,5 @@
-const User = require("../models/userModels");
-const Item = require("../models/itemModel");
+const User = require('../models/userModels');
+const Item = require('../models/itemModel');
 
 // 1️⃣ Add to Wishlist
 exports.addToWishlist = async (req, res) => {
@@ -12,18 +12,18 @@ exports.addToWishlist = async (req, res) => {
     // Check item exists
     const item = await Item.findById(itemId);
     if (!item) {
-      return res.status(404).json({ message: "Item not found" });
+      return res.status(404).json({ message: 'Item not found' });
     }
 
     // Prevent duplicate
     if (user.wishlist.includes(itemId)) {
-      return res.status(400).json({ message: "Item already in wishlist" });
+      return res.status(400).json({ message: 'Item already in wishlist' });
     }
 
     user.wishlist.push(itemId);
     await user.save();
 
-    res.status(200).json({ message: "Item added to wishlist" });
+    res.status(200).json({ message: 'Item added to wishlist' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -43,7 +43,7 @@ exports.removeFromWishlist = async (req, res) => {
 
     await user.save();
 
-    res.status(200).json({ message: "Item removed from wishlist" });
+    res.status(200).json({ message: 'Item removed from wishlist' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -53,8 +53,8 @@ exports.removeFromWishlist = async (req, res) => {
 exports.getMyWishlist = async (req, res) => {
   try {
     const user = await User.findById(req.user._id)
-      .populate("wishlist")
-      .select("wishlist");
+      .populate('wishlist')
+      .select('wishlist');
 
     res.status(200).json(user.wishlist);
   } catch (error) {

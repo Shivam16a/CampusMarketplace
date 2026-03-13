@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema(
   {
@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema(
 
     gender: {
       type: String,
-      enum: ["Male", "Female", "Other"],
+      enum: ['Male', 'Female', 'Other'],
       required: true,
     },
 
@@ -39,13 +39,13 @@ const userSchema = new mongoose.Schema(
 
     profilepic: {
       type: String,
-      default: "",
+      default: '',
     },
 
     role: {
       type: String,
-      enum: ["user", "seller"],
-      default: "user",
+      enum: ['user', 'seller'],
+      default: 'user',
     },
     
     isBanned: {
@@ -61,7 +61,7 @@ const userSchema = new mongoose.Schema(
     wishlist: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Item",
+        ref: 'Item',
       },
     ],
 
@@ -73,4 +73,4 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);

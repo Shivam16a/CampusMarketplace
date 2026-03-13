@@ -9,12 +9,12 @@ const sellerStats = async (req, res) => {
 
     const totalSold = await Item.countDocuments({
         user: sellerId,
-        status: "Sold",
+        status: 'Sold',
     });
 
     const soldItems = await Item.find({
         user: sellerId,
-        status: "Sold",
+        status: 'Sold',
     });
 
     const totalEarnings = soldItems.reduce(
@@ -24,7 +24,7 @@ const sellerStats = async (req, res) => {
 
     const activeListings = await Item.countDocuments({
         user: sellerId,
-        status: "Available",
+        status: 'Available',
     });
 
     res.json({

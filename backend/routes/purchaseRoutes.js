@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
 const {
@@ -6,13 +6,13 @@ const {
   getSellerRequests,
   updateRequestStatus,
   getBuyerRequests,
-} = require("../controllers/purchaseController");
+} = require('../controllers/purchaseController');
 
-const { protect } = require("../middleware/authMiddleware");
+const { protect } = require('../middleware/authMiddleware');
 
-router.post("/:itemId", protect, sendPurchaseRequest);
-router.get("/seller", protect, getSellerRequests);
-router.get("/buyer", protect, getBuyerRequests);
-router.put("/:id", protect, updateRequestStatus);
+router.post('/:itemId', protect, sendPurchaseRequest);
+router.get('/seller', protect, getSellerRequests);
+router.get('/buyer', protect, getBuyerRequests);
+router.put('/:id', protect, updateRequestStatus);
 
 module.exports = router;

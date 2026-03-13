@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
 const {
@@ -6,24 +6,24 @@ const {
     getNotifications,
     markAsRead,
     deleteNotification,
-} = require("../controllers/notificationController.js");
+} = require('../controllers/notificationController.js');
 
-const { protect } = require("../middleware/authMiddleware.js");
+const { protect } = require('../middleware/authMiddleware.js');
 
 
 // admin / seller send notification
-router.post("/send", protect, sendNotification);
+router.post('/send', protect, sendNotification);
 
 
 // user get notification
-router.get("/", protect, getNotifications);
+router.get('/', protect, getNotifications);
 
 
 // mark read
-router.put("/read/:id", protect, markAsRead);
+router.put('/read/:id', protect, markAsRead);
 
 
 // delete
-router.delete("/:id", protect, deleteNotification);
+router.delete('/:id', protect, deleteNotification);
 
 module.exports = router;
