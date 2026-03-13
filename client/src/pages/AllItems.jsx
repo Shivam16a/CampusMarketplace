@@ -18,6 +18,7 @@ const AllItems = () => {
             setLoading(false);
         }
     };
+     
 
     useEffect(() => {
         fetchItems();

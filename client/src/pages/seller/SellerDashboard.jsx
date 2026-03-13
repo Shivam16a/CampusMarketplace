@@ -20,7 +20,7 @@ const SellerDashboard = () => {
             const { data } = await API.get("/seller/stats");
             setStats(data);
         } catch (error) {
-            console.log("Failed to load stats");
+            console.log(error.message||"Failed to load stats");
         }
     };
     useEffect(() => {

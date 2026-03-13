@@ -22,6 +22,7 @@ const SendNotification = () => {
             setMessage("");
 
         } catch (error) {
+            console.error(error.message);
             alert("Error sending notification");
         }
     };

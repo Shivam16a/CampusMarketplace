@@ -8,6 +8,7 @@ const RequestCard = ({ request, refresh }) => {
       await API.put(`/purchase/${request._id}`, { status });
       refresh();
     } catch (error) {
+      console.error(error.message);
       alert("Action failed");
     }
   };

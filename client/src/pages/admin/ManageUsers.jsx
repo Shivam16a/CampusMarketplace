@@ -4,7 +4,6 @@ import API from "../../utils/api";
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([]);
-    const [search, setSearch] = useState("");
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -42,7 +41,6 @@ const ManageUsers = () => {
 
     const handleBack = () => {
         navigate("/admin/users"); 
-        setSearch(""); 
     };
 
 
