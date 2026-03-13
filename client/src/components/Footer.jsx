@@ -3,7 +3,7 @@ import "../styles/Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="campus-footer text-light pt-5">
+    <footer className="campus-footer text-light pt-5 mt-3">
       <div className="container">
         <div className="row gy-4">
 

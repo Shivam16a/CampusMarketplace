@@ -14,7 +14,7 @@ const Profile = () => {
       const { data } = await API.get("/purchase/seller");
       setRequests(data);
     } catch (error) {
-      console.error(error.message||"Failed to load requests");
+      console.error(error.message || "Failed to load requests");
     }
   };
   //order list
@@ -35,7 +35,7 @@ const Profile = () => {
       const { data } = await API.get("/auth/profile");
       setUser(data);
     } catch (error) {
-      console.error(error.message||"Failed to load profile");
+      console.error(error.message || "Failed to load profile");
     }
   };
 
@@ -44,12 +44,12 @@ const Profile = () => {
     fetchRequests();
   }, []);
 
-  // 🔥 Handle Input Change
+  //  Handle Input Change
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  // 🔥 Update Profile
+  // Update Profile
   const updateProfile = async (e) => {
     e.preventDefault();
     try {
@@ -58,7 +58,7 @@ const Profile = () => {
       setEditMode(false);
       fetchProfile();
     } catch (error) {
-      console.error(error.message||"Update failed");
+      console.error(error.message || "Update failed");
     }
   };
 
