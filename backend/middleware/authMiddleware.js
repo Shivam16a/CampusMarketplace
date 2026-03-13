@@ -28,7 +28,7 @@ const protect = async (req, res, next) => {
         return res.status(401).json({ message: 'Invalid or expired token' });
     }
 };
-
+// for adimi access
 const adminOnly = (req, res, next) => {
     if (req.user && req.user.isAdmin) {
         next();
