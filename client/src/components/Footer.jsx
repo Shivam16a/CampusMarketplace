@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import "../styles/Footer.css";
 
 const Footer = () => {
@@ -10,7 +11,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-md-4">
             <h3 className="fw-bold brand text-primary">
-              <img src="/vite.svg" alt="logo" width={40}/> CampusMart
+              <img src="/vite.svg" alt="logo" width={40} /> CampusMart
             </h3>
 
             <p className="footer-text">
@@ -31,10 +32,9 @@ const Footer = () => {
           <div className="col-md-2">
             <h5 className="footer-title">Quick Links</h5>
             <ul className="footer-links">
-              <li><a href="/">Home</a></li>
-              <li><a href="/products">Browse Items</a></li>
-              <li><a href="/sell">Sell Product</a></li>
-              <li><a href="/help">Help Center</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/help#seller">Sell Product</Link></li>
+              <li><Link to="/help#helpcenter">Help Center</Link></li>
             </ul>
           </div>
 
@@ -42,10 +42,8 @@ const Footer = () => {
           <div className="col-md-3">
             <h5 className="footer-title">Support</h5>
             <ul className="footer-links">
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/contact">Contact</a></li>
-              <li><a href="/privacy">Privacy Policy</a></li>
-              <li><a href="/terms">Terms & Conditions</a></li>
+              <li><Link to="/help">About Us</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
 
@@ -65,7 +63,7 @@ const Footer = () => {
 
             <p>
               <i className="fa-solid fa-location-dot me-2"></i>
-              Campus Area, India
+              Campus Area, India (Kajipur Thathan, Hajipur, Vaishali-844125)
             </p>
           </div>
 

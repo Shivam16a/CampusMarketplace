@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import "../styles/custom.css";
 import FeedbackCarousel from "../components/FeedbackCarousel";
+import { useLocation } from "react-router-dom";
 
 const HelpCenter = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.hash) {
+            const element = document.getElementById(location.hash.substring(1));
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    }, [location]);
+
     return (
         <motion.div
             className="container mt-5 help-page"
@@ -14,7 +26,7 @@ const HelpCenter = () => {
 
             {/* Title */}
 
-            <h1 className="text-center mb-4">
+            <h1 className="text-center mb-4" id="helpcenter">
                 <img src="/vite.svg" alt="logo" width={35} className="me-2" />
                 CampusMart Help Center
             </h1>
@@ -121,7 +133,7 @@ const HelpCenter = () => {
 
             {/* Seller Guidelines */}
 
-            <h3 className="mt-5 mb-3 text-warning">
+            <h3 className="mt-5 mb-3 text-warning" id="seller">
                 <i className="fa-solid fa-store me-2"></i>
                 Seller Guidelines
             </h3>
