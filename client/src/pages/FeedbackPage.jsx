@@ -1,5 +1,6 @@
 import { useState } from "react";
 import API from "../utils/api";
+import { toast } from "react-toastify";
 
 const FeedbackPage = () => {
 
@@ -15,7 +16,7 @@ const FeedbackPage = () => {
             rating
         });
 
-        alert("Feedback Submitted");
+        toast.success("Feedback Submitted");
 
         setMessage("");
         setRating(0);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import API from "../utils/api";
+import { toast } from "react-toastify";
 
 const AddItem = () => {
   const [formData, setFormData] = useState({
@@ -57,10 +58,10 @@ const AddItem = () => {
 
     try {
       await API.post("/items", data);
-      alert("Item Added Successfully");
+      toast.success("Item Added Successfully");
       setImages([]);
     } catch (error) {
-      alert(error.response?.data?.message);
+      toast.error(error.response?.data?.message);
     }
   };
 

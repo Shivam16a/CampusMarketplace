@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import API from "../utils/api";
 import "../index.css";
 import FeedbackPage from "./FeedbackPage"
+import { toast } from "react-toastify";
 
 const Contact = () => {
 
@@ -28,8 +29,10 @@ const Contact = () => {
             const res = await API.post("/contact/send", formData);
             setResponseMsg(res.data.message);
             setFormData({ name: "", email: "", message: "" });
+            toast.success("submitted");
         } catch (error) {
             setResponseMsg("Something went wrong. Please try again.");
+            toast.warning(error||"Something went wrong");
         } finally {
             setLoading(false);
         }

@@ -1,6 +1,7 @@
 import React from "react";
 import API from "../../utils/api";
 import RequestStatusBadge from "./RequestStatusBadge";
+import { toast } from "react-toastify";
 
 const RequestCard = ({ request, refresh }) => {
   const updateStatus = async (status) => {
@@ -9,7 +10,7 @@ const RequestCard = ({ request, refresh }) => {
       refresh();
     } catch (error) {
       console.error(error.message);
-      alert("Action failed");
+      toast.error("Action failed");
     }
   };
   // console.log(request);

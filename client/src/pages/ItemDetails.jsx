@@ -5,6 +5,7 @@ import ItemCarousel from "../components/Item/ItemCarousel";
 import SellerInfo from "../components/Item/SellerInfo";
 import ItemInfo from "../components/Item/ItemInfo";
 import PurchaseButton from "../components/Purchase/PurchaseButton";
+import { toast } from "react-toastify";
 
 const ItemDetails = () => {
   const { id } = useParams();
@@ -41,7 +42,7 @@ const ItemDetails = () => {
       }
     } catch (error) {
       console.log(error.response?.data?.message);
-      alert(error.response?.data?.message);
+      toast.warning(error.response?.data?.message);
     }
   };
 

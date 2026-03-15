@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import API from "../utils/api";
+import { toast } from "react-toastify";
 
 const EditItem = () => {
   const { id } = useParams();
@@ -31,6 +32,7 @@ const EditItem = () => {
         exchangeOption: data.exchangeOption,
       });
       setExistingImages(data.images);
+
     };
 
     fetchItem();
@@ -63,7 +65,7 @@ const EditItem = () => {
 
     await API.put(`/items/${id}`, data);
 
-    alert("Item Updated Successfully");
+    toast.success("Item Updated Successfully");
     navigate("/my-listings");
   };
 

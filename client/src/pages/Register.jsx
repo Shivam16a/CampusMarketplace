@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import API from "../utils/api";
 import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -43,11 +44,11 @@ const Register = () => {
 
       localStorage.setItem("userInfo", JSON.stringify(data));
 
-      alert("Registration Successful ✅");
+      toast.success("Registration Successful ✅");
       window.location.href = "/";
 
     } catch (err) {
-      alert(err.response?.data?.message);
+      toast.warning(err.response?.data?.message);
       console.log(err.response?.data?.message || "something wents wrong");
     }
   };

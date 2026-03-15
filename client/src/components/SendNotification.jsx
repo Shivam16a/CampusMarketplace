@@ -1,5 +1,6 @@
 import { useState } from "react";
 import API from "../utils/api";
+import { toast } from "react-toastify";
 
 const SendNotification = () => {
 
@@ -16,14 +17,14 @@ const SendNotification = () => {
                 message,
             });
 
-            alert("Notification Sent");
+            toast.success("Notification Sent");
 
             setUsername("");
             setMessage("");
 
         } catch (error) {
             console.error(error.message);
-            alert("Error sending notification");
+            toast.warning("Error sending notification");
         }
     };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../../utils/api";
+import { toast } from "react-toastify";
 
 const PurchaseButton = ({ itemId }) => {
   const navigate = useNavigate();
@@ -11,10 +12,10 @@ const PurchaseButton = ({ itemId }) => {
         navigate("/login");
       } else {
         await API.post(`/purchase/${itemId}`);
-        alert("Purchase Request Sent");
+        toast.success("Purchase Request Sent");
       }
     } catch (error) {
-      alert(error.response?.data?.message || "Request failed");
+      toast.error(error.response?.data?.message || "Request failed");
     }
   };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import API from "../utils/api";
 import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -24,12 +25,12 @@ const Login = () => {
 
       localStorage.setItem("userInfo", JSON.stringify(data));
 
-      alert("Login Successful", data);
+      toast.success("Login Successful", data);
 
       window.location.href = "/";
 
     } catch (err) {
-      alert(err.response?.data?.message);
+      toast.warning(err.response?.data?.message);
       console.log(err.response?.data?.message || "something wents wrong");
     }
   };
