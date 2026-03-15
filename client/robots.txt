@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block private pages
+Disallow: /admin
+Disallow: /dashboard
+
+# Sitemap
+Sitemap: https://campus-marketplace-dusky.vercel.app/sitemap.xml
