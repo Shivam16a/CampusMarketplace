@@ -47,7 +47,7 @@ const BuyerRequests = () => {
                     Seller: <strong>{req.seller.username}</strong><br />
                     <Link
                       className="text-decoration-none text-body d-inline-block"
-                      to={`https://wa.me/${req.seller.phone}?text=Hello%20${req.seller.username}%2C%20I%20want%20to%20ask%20about%20This%20product%20${req.item.name}%20you%20are%20selling%20on%CampusMart`}
+                      to={`https://wa.me/91${req.seller.phone}?text=Hello%20${req.seller.username}%2C%20I%20want%20to%20ask%20about%20This%20product%20${req.item.name}%20you%20are%20selling%20on%CampusMart`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
