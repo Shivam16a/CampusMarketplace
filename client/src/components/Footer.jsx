@@ -63,7 +63,7 @@ const Footer = () => {
 
             <p>
               <i className="fa-solid fa-location-dot me-2"></i>
-              Campus Area, India (Kajipur Thathan, Hajipur, Vaishali-844125)
+              Kajipur Thathan, Hajipur, Vaishali-844125
             </p>
           </div>
 
@@ -71,7 +71,7 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="footer-bottom mt-4">
-          © {new Date().getFullYear()} CampusMart | Built by Shivam Kumar
+          &copy; {new Date().getFullYear()} CampusMart | Built by Shivam Kumar
         </div>
       </div>
     </footer>
