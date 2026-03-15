@@ -18,7 +18,7 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-    origin: ['http://localhost:5173','https://campus-marketplace-dusky.vercel.app'],
+    origin: ['http://localhost:5173', 'https://campus-marketplace-dusky.vercel.app'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
@@ -40,6 +40,28 @@ app.use(helmet({
 }));
 app.use(limiter);
 
+// server.js ke niche add karein
+app.get('/api/cron-test', (req, res) => {
+    console.log('Cron job hit at', new Date().toLocaleString());
+    res.send('Cron job executed successfully!');
+});
+
+//anty header
+app.use((req, res, next) => {
+    res.setHeader(
+        'Content-Security-Policy',
+        'default-src \'self\'; script-src \'self\' https://cdn.jsdelivr.net; style-src \'self\' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com \'unsafe-inline\'; font-src \'self\' https://cdnjs.cloudflare.com; img-src \'self\' data:;'
+    );
+    res.setHeader('X-Frame-Options', 'DENY');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    res.setHeader(
+        'Permissions-Policy',
+        'camera=(), microphone=(), geolocation=()'
+    );
+    next();
+});
+
 app.use('/uploads', express.static('uploads'));
 app.use('/api/auth', userRoute);
 app.use('/api/items', itemRoute);
@@ -48,8 +70,8 @@ app.use('/api/purchase', purchaseRoutes);
 app.use('/api/seller', sellerRoute);
 app.use('/api/admin', adminRoutes);
 app.use('/api/contact', contactRoutes);
-app.use('/api/notifications',notificationRoutes);
-app.use('/api/feedback',feedbackRoutes);
+app.use('/api/notifications', notificationRoutes);
+app.use('/api/feedback', feedbackRoutes);
 
 
 
