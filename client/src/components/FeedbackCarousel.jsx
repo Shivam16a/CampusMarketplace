@@ -69,7 +69,7 @@ const FeedbackCarousel = () => {
                             {/* USER IMAGE */}
 
                             <img
-                                src={`http://localhost:6550/uploads/${f.user?.profilepic}`}
+                                src={`https://campusmarketplace-1.onrender.com/uploads/${f.user?.profilepic}`}
                                 alt="user"
                                 className="rounded-circle mb-3"
                                 style={{

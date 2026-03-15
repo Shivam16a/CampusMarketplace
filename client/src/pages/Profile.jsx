@@ -78,7 +78,7 @@ const Profile = () => {
 
               <div className="col-md-4 text-center mb-3 mb-md-0">
                 <img
-                  src={`http://localhost:6550/uploads/${user.profilepic}`}
+                  src={`https://campusmarketplace-1.onrender.com/uploads/${user.profilepic}`}
                   alt="Profile"
                   className="rounded-circle border"
                   width="150"

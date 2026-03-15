@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import API from "../utils/api";
 import { Link } from "react-router-dom";
 
 const Register = () => {
@@ -32,8 +32,7 @@ const Register = () => {
         dataToSend.append("profilepic", profilepic);
       }
 
-      const { data } = await axios.post(
-        "http://localhost:6550/api/auth/register",
+      const { data } = await API.post("/auth/register",
         dataToSend,
         {
           headers: {
@@ -49,7 +48,7 @@ const Register = () => {
 
     } catch (err) {
       alert(err.response?.data?.message);
-      console.log(err.response?.data?.message  || "something wents wrong");
+      console.log(err.response?.data?.message || "something wents wrong");
     }
   };
 

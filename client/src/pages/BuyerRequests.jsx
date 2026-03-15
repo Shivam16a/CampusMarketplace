@@ -35,7 +35,7 @@ const BuyerRequests = () => {
             <div key={req._id} className="col-md-4 mb-4">
               <div className="card shadow">
                 <img
-                  src={`http://localhost:6550/uploads/${req.item.images[0]}`}
+                  src={`https://campusmarketplace-1.onrender.com/uploads/${req.item.images[0]}`}
                   className="card-img-top"
                   alt={req.item.name}
                   style={{ height: "200px", objectFit: "cover" }}

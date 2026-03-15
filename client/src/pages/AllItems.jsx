@@ -77,7 +77,7 @@ const AllItems = () => {
                             <div className="card">
                                 {item.images[0] && (
                                     <img
-                                        src={`http://localhost:6550/uploads/${item.images[0]}`}
+                                        src={`https://campusmarketplace-1.onrender.com/uploads/${item.images[0]}`}
                                         className="card-img-top"
                                         alt=""
                                         style={{height:"400px"}}

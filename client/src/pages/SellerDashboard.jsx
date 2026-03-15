@@ -82,7 +82,7 @@ const SellerDashboard = () => {
 
                 {/* Image */}
                 <img
-                  src={`http://localhost:6550/uploads/${item.images[0]}`}
+                  src={`https://campusmarketplace-1.onrender.com/uploads/${item.images[0]}`}
                   className="card-img-top"
                   alt={item.name}
                   style={{ height: "200px", objectFit: "cover" }}

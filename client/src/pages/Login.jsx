@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import API from "../utils/api";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -18,8 +18,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        "http://localhost:6550/api/auth/login",
+      const { data } = await API.post("/auth/login",
         formData
       );
 
@@ -31,7 +30,7 @@ const Login = () => {
 
     } catch (err) {
       alert(err.response?.data?.message);
-      console.log(err.response?.data?.message  || "something wents wrong");
+      console.log(err.response?.data?.message || "something wents wrong");
     }
   };
 
