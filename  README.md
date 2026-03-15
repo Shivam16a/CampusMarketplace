@@ -88,25 +88,27 @@ This platform helps students:
 ---
 
 ## 📂 Project Structure
+
+```
 CampusMarketplace
 │
 ├── frontend
-│ ├── public
-│ ├── src
-│ │ ├── components
-│ │ ├── pages
-│ │ ├── utils
-│ │ └── App.jsx
+│   ├── public
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── utils
+│   │   └── App.jsx
 │
 ├── backend
-│ ├── controllers
-│ ├── models
-│ ├── routes
-│ ├── middleware
-│ └── server.js
+│   ├── controllers
+│   ├── models
+│   ├── routes
+│   ├── middleware
+│   └── server.js
 │
 └── README.md
-
+```
 
 ---
 
