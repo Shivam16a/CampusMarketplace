@@ -115,16 +115,16 @@ CampusMarketplace
 ## 📸 Screenshots
 
 ### Home Page
-![Home](screenshots/home.png)
+![Home](screenshot/home.png)
 
 ### Products Page
-![Products](screenshots/products.png)
+![Products](screenshot/products.png)
 
 ### User Profile
-![Profile](screenshots/profile.png)
+![Profile](screenshot/profile.png)
 
 ### Admin Dashboard
-![Admin](screenshots/admin.png)
+![Admin](screenshot/admin.png)
 
 ---
 
