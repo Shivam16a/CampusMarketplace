@@ -35,9 +35,7 @@ const limiter = rateLimit({
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use(helmet({
-    crossOriginResourcePolicy: { policy: 'cross-origin' }
-}));
+app.use(helmet());
 app.use(limiter);
 
 // server.js ke niche add karein
@@ -49,8 +47,12 @@ app.get('/api/cron-test', (req, res) => {
 //anty header
 app.use((req, res, next) => {
     res.setHeader(
-        'Content-Security-Policy',
-        'default-src \'self\'; script-src \'self\' https://cdn.jsdelivr.net; style-src \'self\' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com \'unsafe-inline\'; font-src \'self\' https://cdnjs.cloudflare.com; img-src \'self\' data:;'
+        "Content-Security-Policy",
+        "default-src 'self'; \
+        script-src 'self' https://cdn.jsdelivr.net; \
+        style-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline'; \
+        font-src 'self' https://cdnjs.cloudflare.com; \
+        img-src 'self' data: https://campusmarketplace-1.onrender.com;"
     );
     res.setHeader('X-Frame-Options', 'DENY');
     res.setHeader('X-Content-Type-Options', 'nosniff');
