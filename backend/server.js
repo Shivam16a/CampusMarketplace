@@ -35,7 +35,9 @@ const limiter = rateLimit({
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use(helmet());
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' }
+}));
 app.use(limiter);
 
 // server.js ke niche add karein
