@@ -1,5 +1,6 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState, Suspense, lazy } from "react";
+import "../styles/Navbar.css";
 
 const NotificationBell = lazy(() => import("./NotificationBell"));
 
@@ -31,9 +32,9 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
       <div className="container">
 
-        <Link className="navbar-brand fw-bold text-primary" to="/">
+        <NavLink className="navbar-brand fw-bold text-primary" to="/">
           <img src="/vite.svg" alt="campusmart" width={40} /> CampusMart
-        </Link>
+        </NavLink>
 
         <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
           <span className="navbar-toggler-icon"></span>
@@ -41,7 +42,6 @@ const Navbar = () => {
 
         <div className="collapse navbar-collapse" id="nav">
 
-          {/* 🔍 SEARCH BOX */}
           {user?.isAdmin && (
             <form className="d-flex mx-auto w-50" onSubmit={searchHandler}>
               <input
@@ -62,63 +62,71 @@ const Navbar = () => {
             {user ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/profile">
+                  <NavLink to="/profile" className="nav-link">
                     <i className="fa fa-user me-1"></i>Profile
-                  </Link>
+                  </NavLink>
                 </li>
+
                 <li className="nav-item">
                   <Suspense fallback={<span className="nav-link">...</span>}>
                     <NotificationBell />
                   </Suspense>
                 </li>
+
                 {user?.role !== "seller" && (
                   <>
                     <li className="nav-item">
-                      <Link to="/my-requests" className="nav-link">
+                      <NavLink to="/my-requests" className="nav-link">
                         <i className="fas fa-shopping-cart me-1"></i> My order
-                      </Link>
+                      </NavLink>
                     </li>
+
                     <li className="nav-item">
-                      <Link to="/help" className="nav-link">
-                        <i className="fas fa-hands-helping me-1"></i>
-                        Help
-                      </Link>
+                      <NavLink to="/help" className="nav-link">
+                        <i className="fas fa-hands-helping me-1"></i> Help
+                      </NavLink>
                     </li>
+
                     <li className="nav-item">
-                      <Link className="nav-link" to="/contact">
-                        <i className="fas fa-id-card me-1"></i>
-                        Contact
-                      </Link>
+                      <NavLink to="/contact" className="nav-link">
+                        <i className="fas fa-id-card me-1"></i> Contact
+                      </NavLink>
                     </li>
                   </>
                 )}
-                {user?.isAdmin && (<>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/admin">
-                      <i className="fas fa-user-shield"></i> Admin
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/send-notification">
-                      <i className="fa fa-bell me-1"></i>
-                      Send Notification
-                    </Link>
-                  </li>
-                </>)}
+
+                {user?.isAdmin && (
+                  <>
+                    <li className="nav-item">
+                      <NavLink to="/admin" className="nav-link">
+                        <i className="fas fa-user-shield"></i> Admin
+                      </NavLink>
+                    </li>
+
+                    <li className="nav-item">
+                      <NavLink to="/send-notification" className="nav-link">
+                        <i className="fa fa-bell me-1"></i> Send Notification
+                      </NavLink>
+                    </li>
+                  </>
+                )}
+
                 {user?.role === "seller" && (
                   <>
                     <li className="nav-item">
-                      <Link className="nav-link" to="/seller-dashboard">
+                      <NavLink to="/seller-dashboard" className="nav-link">
                         <i className="fas fa-signal"></i> Product Status
-                      </Link>
+                      </NavLink>
                     </li>
+
                     <li className="nav-item">
-                      <Link className="nav-link" to="/sellerchart">
+                      <NavLink to="/sellerchart" className="nav-link">
                         <i className="fas fa-chart-line"></i> Analytic
-                      </Link>
+                      </NavLink>
                     </li>
                   </>
                 )}
+
                 <li className="nav-item">
                   <button className="btn btn-outline-danger ms-2" onClick={logoutHandler}>
                     <i className="fa fa-sign-out"></i>
@@ -128,15 +136,15 @@ const Navbar = () => {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/login">
+                  <NavLink to="/login" className="nav-link">
                     <i className="fa fa-sign-in me-1"></i>Login
-                  </Link>
+                  </NavLink>
                 </li>
 
                 <li className="nav-item">
-                  <Link className="nav-link" to="/register">
+                  <NavLink to="/register" className="nav-link">
                     <i className="fa fa-user-plus me-1"></i>Register
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}
