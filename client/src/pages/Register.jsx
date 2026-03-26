@@ -54,10 +54,10 @@ const Register = () => {
   };
 
   return (
-    <div className="container py-4 py-md-5">
+    <div className="container-fluid py-3 py-md-5">
       <div className="row justify-content-center">
-        <div className="col-12 col-sm-11 col-md-10 col-lg-8 col-xl-6">
-          <div className="card shadow-lg border-0 rounded-4">
+        <div className="col-12 col-md-10 col-lg-8 col-xl-6">
+          <div className="card shadow-lg border-0 rounded-4 w-100">
             <div className="card-body p-3 p-sm-4 p-md-5">
 
               {/* Title */}
