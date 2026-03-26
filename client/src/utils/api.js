@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://campusmarketplace-1.onrender.com/api",
+  baseURL: "https://campusmarketplace-cw77.onrender.com/api",
 });
 
 API.interceptors.request.use((req) => {
