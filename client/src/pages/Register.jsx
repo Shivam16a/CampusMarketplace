@@ -54,25 +54,27 @@ const Register = () => {
   };
 
   return (
-    <div className="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light">
-      <div className="row w-100">
-        <div className="col-11 col-sm-10 col-md-8 col-lg-6 mx-auto">
+    <div className="container py-4 py-md-5">
+      <div className="row justify-content-center">
+        <div className="col-12 col-sm-11 col-md-10 col-lg-8 col-xl-6">
           <div className="card shadow-lg border-0 rounded-4">
-            <div className="card-body p-4 p-md-5">
+            <div className="card-body p-3 p-sm-4 p-md-5">
 
               {/* Title */}
               <div className="text-center mb-4">
-                <h3 className="fw-bold"><img src="/vite.svg" width={40} alt="logo" /> Register</h3>
+                <h3 className="fw-bold">
+                  <img src="/vite.svg" width={35} alt="logo" /> Register
+                </h3>
                 <p className="text-muted small">
                   Create your CampusMart account
                 </p>
               </div>
 
               <form onSubmit={handleSubmit}>
-                <div className="row">
+                <div className="row g-3">
 
                   {/* Username */}
-                  <div className="col-md-6 mb-3">
+                  <div className="col-12 col-md-6">
                     <label className="form-label fw-semibold">
                       <i className="fa fa-user me-2 text-primary"></i>
                       Username
@@ -82,14 +84,13 @@ const Register = () => {
                       name="username"
                       className="form-control"
                       placeholder="Enter username"
-                      autoComplete="off"
                       onChange={handleChange}
                       required
                     />
                   </div>
 
                   {/* Email */}
-                  <div className="col-md-6 mb-3">
+                  <div className="col-12 col-md-6">
                     <label className="form-label fw-semibold">
                       <i className="fa fa-envelope me-2 text-primary"></i>
                       Email
@@ -99,14 +100,13 @@ const Register = () => {
                       name="email"
                       className="form-control"
                       placeholder="Enter email"
-                      autoComplete="off"
                       onChange={handleChange}
                       required
                     />
                   </div>
 
                   {/* Phone */}
-                  <div className="col-md-6 mb-3">
+                  <div className="col-12 col-md-6">
                     <label className="form-label fw-semibold">
                       <i className="fa fa-phone me-2 text-primary"></i>
                       Phone
@@ -116,14 +116,13 @@ const Register = () => {
                       name="phone"
                       className="form-control"
                       placeholder="Enter phone number"
-                      autoComplete="off"
                       onChange={handleChange}
                       required
                     />
                   </div>
 
                   {/* Gender */}
-                  <div className="col-md-6 mb-3">
+                  <div className="col-12 col-md-6">
                     <label className="form-label fw-semibold">
                       <i className="fa fa-venus-mars me-2 text-primary"></i>
                       Gender
@@ -135,14 +134,14 @@ const Register = () => {
                       required
                     >
                       <option value="">Select Gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Other">Other</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Other</option>
                     </select>
                   </div>
 
-                  {/* College Name */}
-                  <div className="col-md-6 mb-3">
+                  {/* College */}
+                  <div className="col-12 col-md-6">
                     <label className="form-label fw-semibold">
                       <i className="fa fa-university me-2 text-primary"></i>
                       College Name
@@ -152,14 +151,13 @@ const Register = () => {
                       name="collagename"
                       className="form-control"
                       placeholder="Enter college name"
-                      autoComplete="off"
                       onChange={handleChange}
                       required
                     />
                   </div>
 
                   {/* Department */}
-                  <div className="col-md-6 mb-3">
+                  <div className="col-12 col-md-6">
                     <label className="form-label fw-semibold">
                       <i className="fa fa-book me-2 text-primary"></i>
                       Department
@@ -169,14 +167,13 @@ const Register = () => {
                       name="department"
                       className="form-control"
                       placeholder="Enter department"
-                      autoComplete="off"
                       onChange={handleChange}
                       required
                     />
                   </div>
 
                   {/* Profile Picture */}
-                  <div className="mb-3">
+                  <div className="col-12">
                     <label className="form-label">
                       <i className="fas fa-image me-2 text-primary"></i>
                       Profile Picture
@@ -189,7 +186,7 @@ const Register = () => {
                   </div>
 
                   {/* Password */}
-                  <div className="col-12 mb-3">
+                  <div className="col-12">
                     <label className="form-label fw-semibold">
                       <i className="fa fa-lock me-2 text-primary"></i>
                       Password
@@ -199,7 +196,6 @@ const Register = () => {
                       name="password"
                       className="form-control"
                       placeholder="Enter password"
-                      autoComplete="off"
                       onChange={handleChange}
                       required
                     />
@@ -207,17 +203,17 @@ const Register = () => {
 
                 </div>
 
-                {/* Register Button */}
-                <div className="d-grid mt-3">
-                  <button type="submit" className="btn btn-primary btn-lg">
+                {/* Button */}
+                <div className="d-grid mt-4">
+                  <button className="btn btn-primary btn-lg">
                     <i className="fa fa-user-plus me-2"></i>
                     Register
                   </button>
                 </div>
 
-                {/* Login Link */}
+                {/* Login */}
                 <div className="text-center mt-3">
-                  <p className="small mb-0">
+                  <p className="small">
                     Already have an account?{" "}
                     <Link to="/login" className="fw-semibold text-decoration-none">
                       Login
