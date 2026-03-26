@@ -137,7 +137,7 @@ const EditItem = () => {
             {existingImages.map((img, index) => (
               <img
                 key={index}
-                src={`https://campusmarketplace-1.onrender.com/uploads/${img}`}
+                src={`https://campusmarketplace-cw77.onrender.com/uploads/${img}`}
                 alt=""
                 width="80"
                 height="80"

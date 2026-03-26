@@ -9,7 +9,7 @@ const SellerInfo = ({ seller }) => {
 
       {seller.profilepic && (
         <img
-          src={`https://campusmarketplace-1.onrender.com/uploads/${seller.profilepic}`}
+          src={`https://campusmarketplace-cw77.onrender.com/uploads/${seller.profilepic}`}
           alt="seller"
           className="rounded-circle mb-2"
           width="80"

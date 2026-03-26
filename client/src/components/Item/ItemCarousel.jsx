@@ -20,7 +20,7 @@ const ItemCarousel = ({ images }) => {
             className={`carousel-item ${index === 0 ? "active" : ""}`}
           >
             <img
-              src={`https://campusmarketplace-1.onrender.com/uploads/${img}`}
+              src={`https://campusmarketplace-cw77.onrender.com/uploads/${img}`}
               className="d-block w-100"
               alt="item"
               style={{ height: "600px", objectFit: "cover",}}
