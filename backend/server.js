@@ -54,7 +54,7 @@ app.use((req, res, next) => {
         script-src 'self' https://cdn.jsdelivr.net; \
         style-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline'; \
         font-src 'self' https://cdnjs.cloudflare.com; \
-        img-src 'self' data: https://campusmarketplace-1.onrender.com;"
+        img-src 'self' data: https://campusmarketplace-cw77.onrender.com;"
     );
     res.setHeader('X-Frame-Options', 'DENY');
     res.setHeader('X-Content-Type-Options', 'nosniff');
