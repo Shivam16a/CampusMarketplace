@@ -11,16 +11,16 @@ const ItemInfo = ({ item }) => {
 
       <p><strong>Category:</strong> {item.category}</p>
       <p><strong>Condition:</strong> {item.condition}</p>
-      <p><strong>Status:</strong> 
-        <span className={`badge ms-2 ${
-          item.status === "Available"
-            ? "bg-success"
-            : item.status === "Reserved"
+      <p><strong>Status:</strong>
+        <span className={`badge ms-2 ${item.status === "Available"
+          ? "bg-success"
+          : item.status === "Reserved"
             ? "bg-warning"
             : "bg-danger"
-        }`}>
+          }`}>
           {item.status}
         </span>
+        {item.status !== "Available" && (<><p>you can not buy this item because the item is {item.status}</p></>)}
       </p>
 
       <p>
